@@ -186,13 +186,8 @@
         <scene sceneID="LgO-X0-gli">
             <objects>
                 <viewController id="mml-J8-jpC" customClass="THProjectViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="E4K-et-RtV">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
-                    </view>
                     <navigationItem key="navigationItem" id="NoX-Wi-azO"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0cn-qk-04z" userLabel="First Responder" sceneMemberID="firstResponder"/>

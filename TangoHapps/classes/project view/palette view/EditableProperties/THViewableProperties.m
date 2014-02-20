@@ -69,7 +69,7 @@ You should have received a copy of the GNU General Public License along with thi
 }
 
 -(void) willDissappear{
-    [self unselectAllConnections];
+    //[self unselectAllConnections];
 }
 
 -(NSString *)title
@@ -101,6 +101,7 @@ You should have received a copy of the GNU General Public License along with thi
     return cell;
 }
 
+/*
 -(void) unselectAllConnections{
     
     TFEditableObject * editable = (TFEditableObject*) self.editableObject;
@@ -108,7 +109,7 @@ You should have received a copy of the GNU General Public License along with thi
     for (TFConnectionLine * connection in connections) {
         connection.selected = NO;
     }
-}
+}*/
 
 -(BOOL) doesActionArray:(NSArray*) array containObject:(id) object{
     for (TFMethodInvokeAction * action in array) {

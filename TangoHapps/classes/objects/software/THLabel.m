@@ -58,10 +58,15 @@ You should have received a copy of the GNU General Public License along with thi
     self.view.layer.borderColor = [UIColor blackColor].CGColor;
     self.view.layer.borderWidth = 1.0f;
     
-    TFMethod * method =[TFMethod methodWithName:@"setText"];
-    method.firstParamType = kDataTypeAny;
-    method.numParams = 1;
-    self.methods = [NSMutableArray arrayWithObject:method];
+    TFMethod * method1 =[TFMethod methodWithName:@"setText"];
+    method1.firstParamType = kDataTypeAny;
+    method1.numParams = 1;
+    
+    TFMethod * method2 =[TFMethod methodWithName:@"appendText"];
+    method2.firstParamType = kDataTypeAny;
+    method2.numParams = 1;
+    
+    self.methods = [NSMutableArray arrayWithObjects:method1,method2,nil];
 }
 
 -(id) init{
@@ -121,9 +126,7 @@ You should have received a copy of the GNU General Public License along with thi
     return label.numberOfLines;
 }
 
--(void) setText:(id)text{
-    UILabel * label = (UILabel*) self.view;
-    //NSLog(@"text: %@",text);
+-(NSString*) convertToString:(id) text{
     NSString * string = @"";
     if([text isKindOfClass:[NSString class]]){
         string = (NSString*) text;
@@ -131,7 +134,21 @@ You should have received a copy of the GNU General Public License along with thi
         NSNumber * number = text;
         string = [number stringValue];
     }
+    return string;
+}
+
+-(void) appendText:(id) text{
     
+    UILabel * label = (UILabel*) self.view;
+    
+    NSString * string = [self convertToString:text];
+    label.text = [label.text stringByAppendingString:string];
+}
+
+-(void) setText:(id)text{
+    UILabel * label = (UILabel*) self.view;
+   
+    NSString * string = [self convertToString:text];
     label.text = string;
 }
 

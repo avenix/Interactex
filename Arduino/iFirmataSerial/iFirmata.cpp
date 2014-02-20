@@ -329,9 +329,9 @@ void iFirmataClass::processInput(void)
     
   int inputData = FirmataSerial.read(); // this is 'int' to handle -1 when no data
   int command;
-    /*
+    
     Serial.print("reads ");
-    Serial.println(inputData);*/
+    Serial.println(inputData);
     
   // TODO make sure it handles -1 properly
 

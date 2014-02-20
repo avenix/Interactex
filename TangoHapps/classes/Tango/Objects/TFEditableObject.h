@@ -82,7 +82,7 @@ You should have received a copy of the GNU General Public License along with thi
 @property (nonatomic) BOOL selected;
 @property (nonatomic) BOOL acceptsConnections;
 @property (nonatomic,retain) CCSprite * sprite;
-@property (nonatomic, readonly) NSMutableArray * connections;
+//@property (nonatomic, readonly) NSMutableArray * connections;
 
 @property (nonatomic, readonly) NSString * shortDescription;
 @property (nonatomic, strong) TFSimulableObject * simulableObject;

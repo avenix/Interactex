@@ -58,7 +58,7 @@ You should have received a copy of the GNU General Public License along with thi
 
 #import "THLabel.h"
 #import "THBLECommunicationModule.h"
-#import "THYannic.h"
+#import "THJennic.h"
 #import "IFFirmata.h"
 #import "THI2CMessage.h"
 

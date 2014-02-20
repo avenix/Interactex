@@ -168,7 +168,7 @@ You should have received a copy of the GNU General Public License along with thi
     [session acceptConnectionFromPeer:peerID error:&error];
 }
 
--(void)session:(GKSession *)aSession  peer:(NSString *)peerID didChangeState:(GKPeerConnectionState)state {   
+-(void)session:(GKSession *)aSession peer:(NSString *)peerID didChangeState:(GKPeerConnectionState)state {
     if(state == GKPeerStateDisconnected){
 
         [_peers removeObjectForKey:peerID];

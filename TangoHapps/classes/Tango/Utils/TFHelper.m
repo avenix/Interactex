@@ -114,15 +114,6 @@ You should have received a copy of the GNU General Public License along with thi
     [TFHelper restoreDrawingState];
 }
 
-+(void)drawLinesForObjects:(NSArray*)objects {
-    for (TFEditableObject * object in objects) {
-        if(object.visible){
-            NSArray * connections = object.connections;
-            [TFHelper drawLines:connections];
-        }
-    }
-}
-
 +(void) restoreDrawingState {
 
     glLineWidth(1.0f);

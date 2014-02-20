@@ -49,13 +49,10 @@ You should have received a copy of the GNU General Public License along with thi
     NSTimer * currentTimer;
 }
 
-@property (strong, nonatomic) NSMutableArray * lines;
 @property (nonatomic, readonly) BOOL running;
 @property (nonatomic) NSInteger maxValue;
 @property (nonatomic) NSInteger minValue;
 
--(void) start;
--(void) stop;
 -(void) addValue1:(float) value;
 -(void) addValue2:(float) value;
 

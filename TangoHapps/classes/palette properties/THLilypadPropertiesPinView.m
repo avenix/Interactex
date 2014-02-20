@@ -104,31 +104,6 @@ float const kLilypadPropertyInnerPadding = 5;
             [_segmentedControl addTarget:self action:@selector(segmentedControlValueChanged:)
                         forControlEvents:UIControlEventValueChanged];
         }
-        
-        /*
-        THElementPinEditable * elementPin = [pin.attachedPins objectAtIndex:0];
-        if(elementPin.hardware.isInputObject){
-            _modeView = [self labelWithFrame:typeLabelFrame text:@"Digital input"];
-        } else if(realPin.isPWM){
-            
-            _segmentedControl = [[UISegmentedControl alloc]initWithItems:[NSArray arrayWithObjects:@"Digital", @"PWM", nil]];
-            
-            CGRect segmentedControlFrame = CGRectMake(typeLabelFrame.origin.x, kLilypadPropertyInnerPadding, kLilypadPropertySegmentedSize.width, kLilypadPropertySegmentedSize.height);
-            _segmentedControl.frame = segmentedControlFrame;
-            if(realPin.mode == kPinModeDigitalOutput){
-                _segmentedControl.selectedSegmentIndex = 0;
-            } else if(realPin.mode == kPinModePWM || realPin.mode == kPinModeBuzzer){
-                _segmentedControl.selectedSegmentIndex = 1;
-            }
-            
-            _modeView = _segmentedControl;
-            
-            [_segmentedControl addTarget:self action:@selector(segmentedControlValueChanged:)
-                        forControlEvents:UIControlEventValueChanged];
-        } else {
-            
-            _modeView = [self labelWithFrame:typeLabelFrame text:@"Digital output"];
-        }*/
     }
     
     [self addSubview:_modeView];

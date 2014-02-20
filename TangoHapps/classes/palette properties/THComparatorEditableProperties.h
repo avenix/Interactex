@@ -42,25 +42,26 @@ You should have received a copy of the GNU General Public License along with thi
 
 #import "THEditableObjectProperties.h"
 
-@interface THComparatorEditableProperties : THEditableObjectProperties
-{
+@interface THComparatorEditableProperties : THEditableObjectProperties {
     BOOL button1Down;
     BOOL button2Down;
-    
-    TFConnectionLine * _connection1;
-    TFConnectionLine * _connection2;
 }
 
 @property (weak, nonatomic) IBOutlet UILabel *operatorTypeLabel;
 @property (weak, nonatomic) IBOutlet UIButton *object1Button;
 @property (weak, nonatomic) IBOutlet UIButton *object2Button;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *operatorTypeControl;
+@property (weak, nonatomic) IBOutlet UILabel *label;
 
-- (IBAction)button1Up:(id)sender;
-- (IBAction)button1Down:(id)sender;
-- (IBAction)button2Up:(id)sender;
-- (IBAction)button2Down:(id)sender;
-- (IBAction)operationTypeChanged:(id)sender;
+@property (strong, nonatomic) TFConnectionLine * connection1;
+@property (strong, nonatomic) TFConnectionLine * connection2;
+
+
+-(IBAction) button1Up:(id)sender;
+-(IBAction) button1Down:(id)sender;
+-(IBAction) button2Up:(id)sender;
+-(IBAction) button2Down:(id)sender;
+-(IBAction) operationTypeChanged:(id)sender;
 
 
 @end

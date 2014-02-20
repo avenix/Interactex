@@ -197,7 +197,6 @@ You should have received a copy of the GNU General Public License along with thi
     }
     
     _attachedToPin = pinEditable;
-    //[self addConnectionTo:_attachedToPin animated:animated];
     
     THElementPin * pin = (THElementPin*) self.simulableObject;
     [pin attachToPin:(THBoardPin*) pinEditable.simulableObject];
@@ -206,9 +205,6 @@ You should have received a copy of the GNU General Public License along with thi
 }
 
 -(void) dettachFromPin{
-    
-    //[self removeAllConnectionsTo:_attachedToPin];
-//    [self removeAllWiresTo:_attachedToPin];
     
     _attachedToPin = nil;
     

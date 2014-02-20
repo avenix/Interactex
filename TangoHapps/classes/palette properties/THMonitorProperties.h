@@ -42,17 +42,18 @@ You should have received a copy of the GNU General Public License along with thi
 
 #import "THEditableObjectProperties.h"
 
-@interface THMonitorProperties : THEditableObjectProperties
+@interface THMonitorProperties : THEditableObjectProperties <UITextFieldDelegate>
 {
     
 }
-
-@property (weak, nonatomic) IBOutlet UILabel *minLabel;
-@property (weak, nonatomic) IBOutlet UILabel *maxLabel;
+@property (weak, nonatomic) IBOutlet UITextField *minText;
+@property (weak, nonatomic) IBOutlet UITextField *maxText;
 @property (weak, nonatomic) IBOutlet UISlider *minSlider;
 @property (weak, nonatomic) IBOutlet UISlider *maxSlider;
 
 - (IBAction)minChanged:(id)sender;
 - (IBAction)maxChanged:(id)sender;
+- (IBAction)minSliderChanged:(id)sender;
+- (IBAction)maxSliderChanged:(id)sender;
 
 @end

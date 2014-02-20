@@ -37,47 +37,27 @@ This program is free software: you can redistribute it and/or modify it under th
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
  
 You should have received a copy of the GNU General Public License along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
 */
 
 #import "THMonitor.h"
-#import "THMonitorLine.h"
-#import "THMonitorLine.h"
+#import "THGraphView.h"
 
 @implementation THMonitor
 
-float const kMonitorUpdateFrequency = 0.1f; //monitor updated every 0.5 seconds
+//float const kMonitorUpdateFrequency = 1/20.0f; //monitor updated every 0.5 seconds
 float const kMonitorNewValueX = 75.0f;
-float const kMonitorMargin = 5;
 
 -(void) loadMonitor{
     
-    UIView * view = [[UIView alloc] init];
-    view.frame = CGRectMake(0, 0, self.width, self.height);
+    CGRect frame = CGRectMake(0, 0, self.width, self.height);
+    
+    THGraphView * view = [[THGraphView alloc] initWithFrame:frame maxAxisY:self.maxValue minAxisY:self.minValue];
     view.layer.borderWidth = 1.0f;
     view.contentMode = UIViewContentModeScaleAspectFit;
 
     self.view = view;
     
-    [self addLines];
     [self addMethods];
-}
-
--(void) addLines{
-    
-    self.lines = [NSMutableArray array];
-    
-    CGColorRef blue = [[UIColor blueColor] CGColor];
-    THMonitorLine * line = [[THMonitorLine alloc] initWithColor:blue];
-    
-    CGColorRef red = [[UIColor redColor] CGColor];
-    THMonitorLine * line2 = [[THMonitorLine alloc] initWithColor:red];
-    
-    line.view = self.view;
-    line2.view = self.view;
-    
-    [self.lines addObject:line];
-    [self.lines addObject:line2];
 }
 
 -(void) addMethods{
@@ -99,11 +79,11 @@ float const kMonitorMargin = 5;
     
     if(self){
         
-        self.width = 200;
-        self.height = 200;
+        self.width = 265;
+        self.height = 130;
         
-        self.maxValue = 255;
-        self.minValue = -255;
+        _maxValue = 255;
+        _minValue = -255;
         
         [self loadMonitor];
     }
@@ -118,8 +98,8 @@ float const kMonitorMargin = 5;
     
     if(self){
         
-        self.maxValue = [decoder decodeIntegerForKey:@"maxValue"];
-        self.minValue = [decoder decodeIntegerForKey:@"minValue"];
+        _maxValue = [decoder decodeIntegerForKey:@"maxValue"];
+        _minValue = [decoder decodeIntegerForKey:@"minValue"];
         
         [self loadMonitor];
     }
@@ -146,45 +126,50 @@ float const kMonitorMargin = 5;
 
 #pragma mark - Methods
 
--(CGPoint) transformedPointForValue:(float) value{
+-(float) mapValueToGraphRange:(float) value{
     float range = (self.maxValue - self.minValue);
-    value = (value / range) * (self.view.frame.size.height - 2 * kMonitorMargin);
+    value = (value + fabs(self.minValue)) / range;
     
-    //NSLog(@"value %d",(int)value);
+    float offset = (kGraphViewGraphOffsetY + kGraphViewAxisLabelSize.height / 2.0f);
+    value *= (self.view.frame.size.height - 2 * offset);
+    value += offset;
     
-    return CGPointMake(self.view.frame.size.width - kMonitorMargin, self.view.frame.size.height/2 - value);
-    //return CGPointMake(100, self.view.frame.size.height/2 - value);
+    return value;
 }
 
 -(void) addValue1:(float) value{
-    //NSLog(@"adding value: %f",value);
-    THMonitorLine * line = [self.lines objectAtIndex:0];
-    [line addPoint: [self transformedPointForValue:value]];
+    
+    value = [self mapValueToGraphRange:value];
+    
+    THGraphView * view = (THGraphView*)self.view;
+    [view addX:value];
+    
 }
 
 -(void) addValue2:(float) value{
+    value = [self mapValueToGraphRange:value];
     
-    THMonitorLine * line = [self.lines objectAtIndex:1];
-    [line addPoint: [self transformedPointForValue:value]];
+    THGraphView * view = (THGraphView*)self.view;
+    [view addY:value];
 }
 
--(void) update{
+-(void) setMaxValue:(NSInteger)maxValue{
     
-    for (THMonitorLine * line in self.lines) {
-        [line update:kMonitorUpdateFrequency];
-    }
+    THGraphView * view = (THGraphView*)self.view;
+    view.maxAxisY = maxValue;
+    
+    _maxValue = maxValue;
 }
 
--(void) start{
-    currentTimer = [NSTimer scheduledTimerWithTimeInterval:kMonitorUpdateFrequency target:self selector:@selector(update) userInfo:nil repeats:YES];
-    _running = YES;
+-(void) setMinValue:(NSInteger)minValue{
+    
+    THGraphView * view = (THGraphView*)self.view;
+    view.minAxisY = minValue;
+    
+    _minValue = minValue;
 }
 
--(void) stop{
-    [currentTimer invalidate];
-    currentTimer = nil;
-    _running = NO;
-}
+#pragma mark - Lifecycle
 
 -(NSString*) description{
     return @"monitor";
@@ -192,26 +177,17 @@ float const kMonitorMargin = 5;
 
 -(void) willStartSimulating{
     
-    [self start];
+    THGraphView* view = (THGraphView*) self.view;
+    [view start];
     
     [super willStartSimulating];
 }
 
 -(void) stopSimulating{
-    [self stop];
-    
-    for (THMonitorLine * line in self.lines) {
-        [line removeAllPoints];
-    }
+    THGraphView* view = (THGraphView*) self.view;
+    [view stop];
     
     [super stopSimulating];
-}
-
--(void) prepareToDie{
-    
-    [self stop];
-    
-    [super prepareToDie];
 }
 
 @end

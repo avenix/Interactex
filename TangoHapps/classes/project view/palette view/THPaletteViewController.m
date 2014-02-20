@@ -46,9 +46,12 @@ You should have received a copy of the GNU General Public License along with thi
 #import "THDraggedPaletteItem.h"
 #import "THCustomPaletteItem.h"
 
+#import "THLipoBatteryPaletteItem.h"
+
+#import "THBLELilyPadPaletteItem.h"
 #import "THLilypadPaletteItem.h"
 #import "THSimpleLilypadPaletteItem.h"
-#import "THYannicPaletteItem.h"
+#import "THJennicPaletteItem.h"
 
 #import "THLedPaletteItem.h"
 #import "THButtonPaletteItem.h"
@@ -85,6 +88,7 @@ You should have received a copy of the GNU General Public License along with thi
 #import "THTabbarViewController.h"
 #import "THBoolValuePaletteItem.h"
 #import "THStringValuePaletteItem.h"
+#import "THPureDataPaletteItem.h"
 
 @implementation THPaletteViewController
 
@@ -410,9 +414,10 @@ You should have received a copy of the GNU General Public License along with thi
     
     
     self.boardsSectionArray  = [NSMutableArray arrayWithObjects:
+                                [[THBLELilyPadPaletteItem alloc] initWithName:@"BLE-LilyPad"],
                                 [[THLilypadPaletteItem alloc] initWithName:@"lilypadBig"],
                                 [[THSimpleLilypadPaletteItem alloc] initWithName:@"lilypadSmall"],
-                                [[THYannicPaletteItem alloc] initWithName:@"jennic"],nil];
+                                [[THJennicPaletteItem alloc] initWithName:@"jennic"],nil];
     
     self.hardwareSectionArray = [NSMutableArray arrayWithObjects:
                                  [[THLedPaletteItem alloc] initWithName:@"led"],
@@ -438,13 +443,21 @@ You should have received a copy of the GNU General Public License along with thi
                                      [[THValuePaletteItem alloc] initWithName:@"number"],
                                      [[THBoolValuePaletteItem alloc] initWithName:@"boolean"],
                                      [[THStringValuePaletteItem alloc] initWithName:@"string"],
+                                     [[THPureDataPaletteItem alloc] initWithName:@"puredata"],
+                                     
                                      nil];
     
+    self.otherHardwareSectionArray  = [NSMutableArray arrayWithObjects:
+                                       [[THLipoBatteryPaletteItem alloc] initWithName:@"lipoBattery"],
+                                       nil
+                                       ];
+                                     
     self.clothesSectionName = @"Textiles";
     self.uiSectionArrayName = @"UI Elements";
     self.boardsSectionName = @"Boards";
     self.hardwareSectionName = @"Hardware Elements";
     self.programmingSectionName = @"Visual Programming";
+    self.otherHardwareSectionName = @"Other Hardware";
 }
 
 -(void) tabBar:(THTabbarView*) tabBar didAddSection:(THTabbarSection*) section{

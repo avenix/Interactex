@@ -92,7 +92,12 @@ You should have received a copy of the GNU General Public License along with thi
 
 #pragma mark - Properties
 
--(void) setText:(NSString *)text{
+-(void) appendText:(id) text{
+    THLabel * label = (THLabel*) self.simulableObject;
+    [label appendText: text];
+}
+
+-(void) setText:(NSString*)text{
     
     THLabel * label = (THLabel*) self.simulableObject;
     label.text = text;

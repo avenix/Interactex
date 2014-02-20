@@ -41,6 +41,7 @@ You should have received a copy of the GNU General Public License along with thi
 */
 
 #import <Foundation/Foundation.h>
+#import "TFConstants.h"
 
 @class TFProject;
 @class TFLayer;
@@ -71,11 +72,41 @@ You should have received a copy of the GNU General Public License along with thi
 @property (nonatomic) BOOL movingTabBar;
 @property (nonatomic, strong) UIImageView * palettePullImageView;
 
+@property (strong, nonatomic) NSArray * editingTools;
+@property (strong, nonatomic) NSArray * simulatingTools;
+@property (strong, nonatomic) NSArray * lilypadTools;
+
+//edition tools
+@property (strong, nonatomic) UIBarButtonItem * connectButton;
+@property (strong, nonatomic) UIBarButtonItem * duplicateButton;
+@property (strong, nonatomic) UIBarButtonItem * removeButton;
+@property (strong, nonatomic) UIBarButtonItem * pushButton;
+@property (strong, nonatomic) UIBarButtonItem * playButton;
+
+//lilypad tools
+@property (strong, nonatomic) UIBarButtonItem * lilypadButton;
+@property (strong, nonatomic) UIBarButtonItem * hideiPhoneButton;
+
+//simulation tools
+@property (strong, nonatomic) UIBarButtonItem * pinsModeButton;
+@property (strong, nonatomic) UIBarButtonItem * stopButton;
+
+//other tools
+@property (strong, nonatomic) UIBarButtonItem * divider;
+@property (strong, nonatomic) UIBarButtonItem * divider2;
+@property (strong, nonatomic) UIBarButtonItem * emptyItem1;
+@property (strong, nonatomic) UIBarButtonItem * emptyItem2;
+
+//tool colors
+@property (strong, nonatomic) UIColor * highlightedItemTintColor;
+@property (strong, nonatomic) UIColor * unselectedTintColor;
+
 -(void) startWithEditor;
 -(void) startSimulation;
 -(void) endSimulation;
 -(void) toggleAppState;
 -(void) reloadContent;
 -(void) saveCurrentProjectAndPalette;
+-(void) updatePushButtonState;
 
 @end

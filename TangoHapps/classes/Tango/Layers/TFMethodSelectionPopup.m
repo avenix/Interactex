@@ -129,20 +129,6 @@ You should have received a copy of the GNU General Public License along with thi
 -(void) selectEventsAndMethods{
     _acceptedEvents = self.object1.events;
     _acceptedMethods = self.object2.methods;
-    
-    /*
-    for (TFEvent * event in self.object1.events) {
-        for (TFMethod * method in self.object2.methods) {
-            if([event canTriggerMethod:method]){
-                if(![_acceptedEvents containsObject:event]){
-                    [_acceptedEvents addObject:event];
-                }
-                if(![_acceptedMethods containsObject:method]){
-                    [_acceptedMethods addObject:method];
-                }
-            }
-        }
-    }*/
 }
 
 -(void) loadTables{
@@ -174,7 +160,7 @@ You should have received a copy of the GNU General Public License along with thi
     
     [self selectEventsAndMethods];
     
-    if(_acceptedEvents.count > 0){
+    if(_acceptedEvents.count > 0 && _acceptedMethods.count > 0){
         
         [self loadTables];
         

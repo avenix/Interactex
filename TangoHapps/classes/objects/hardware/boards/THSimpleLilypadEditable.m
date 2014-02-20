@@ -45,6 +45,8 @@ You should have received a copy of the GNU General Public License along with thi
 #import "THSimpleLilypad.h"
 #import "THBoardPinEditable.h"
 #import "THLilypadProperties.h"
+#import "THSimpleLilypadProperties.h"
+#import "THBoardProperties.h"
 
 @implementation THSimpleLilypadEditable
 
@@ -140,7 +142,8 @@ CGPoint kSimpleLilypadPinPositions[kSimpleLilypadNumberOfPins] = {
 
 -(NSArray*)propertyControllers {
     NSMutableArray *controllers = [NSMutableArray array];
-    [controllers addObject:[THLilypadProperties properties]];
+    [controllers addObject:[THSimpleLilypadProperties properties]];
+    [controllers addObject:[THBoardProperties properties]];
     [controllers addObjectsFromArray:[super propertyControllers]];
     return controllers;
 }

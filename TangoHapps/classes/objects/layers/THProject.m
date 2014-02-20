@@ -139,6 +139,7 @@ You should have received a copy of the GNU General Public License along with thi
     _clothes = [NSMutableArray array];
     _boards = [NSMutableArray array];
     _hardwareComponents = [NSMutableArray array];
+    _otherHardwareComponents = [NSMutableArray array];
     _iPhoneObjects = [NSMutableArray array];
     _conditions = [NSMutableArray array];
     _actions = [NSMutableArray array];
@@ -196,6 +197,7 @@ You should have received a copy of the GNU General Public License along with thi
         
         NSArray * boards = [decoder decodeObjectForKey:@"boards"];
         NSArray * hardwareComponents = [decoder decodeObjectForKey:@"hardwareComponents"];
+        NSArray * otherHardwareComponents = [decoder decodeObjectForKey:@"otherHardwareComponents"];
         NSArray * clothes = [decoder decodeObjectForKey:@"clothes"];
         NSArray * iPhoneObjects = [decoder decodeObjectForKey:@"iPhoneObjects"];
         NSArray * conditions = [decoder decodeObjectForKey:@"conditions"];
@@ -224,6 +226,10 @@ You should have received a copy of the GNU General Public License along with thi
         
         for(THHardwareComponentEditableObject* hardwareComponent in hardwareComponents){
             [self addHardwareComponent:hardwareComponent];
+        }
+        
+        for(THHardwareComponentEditableObject* hardwareComponent in otherHardwareComponents){
+            [self addOtherHardwareComponent:hardwareComponent];
         }
         
         for(THViewEditableObject* iphoneObject in iPhoneObjects){
@@ -449,6 +455,31 @@ You should have received a copy of the GNU General Public License along with thi
     }
 }
 
+#pragma mark - Other Hardware Components
+
+-(void) addOtherHardwareComponent:(THHardwareComponentEditableObject*) otherHardwareComponent{
+    [self.hardwareComponents addObject:otherHardwareComponent];
+    [self notifyObjectAdded:otherHardwareComponent];
+}
+
+-(void) removeOtherHardwareComponent:(THHardwareComponentEditableObject*) otherHardwareComponent{
+    [self removeAllWiresFrom:otherHardwareComponent notify:YES];
+    [self.otherHardwareComponents removeObject:otherHardwareComponent];
+    
+    [self deregisterActionsForObject:otherHardwareComponent];
+    [self notifyObjectRemoved:otherHardwareComponent];
+}
+
+-(THHardwareComponentEditableObject*) otherHardwareComponentAtLocation:(CGPoint) location{
+    for (THHardwareComponentEditableObject * object in self.otherHardwareComponents) {
+        if([object testPoint:location]){
+            return object;
+        }
+    }
+    return nil;
+}
+
+
 #pragma mark - Clothes
 
 -(void) addClothe:(THClothe*) clothe{
@@ -462,7 +493,7 @@ You should have received a copy of the GNU General Public License along with thi
 }
 
 -(THClothe*) clotheAtLocation:(CGPoint) location{
-    for (THClothe * clothe in _clothes) {
+    for (THClothe * clothe in self.clothes) {
         if([clothe testPoint:location]){
             return clothe;
         }
@@ -484,7 +515,7 @@ You should have received a copy of the GNU General Public License along with thi
 }
 
 -(TFEditableObject*) conditionAtLocation:(CGPoint) location{
-    for (TFEditableObject* condition in _conditions) {
+    for (TFEditableObject* condition in self.conditions) {
         if([condition testPoint:location]){
             return condition;
         }
@@ -506,7 +537,7 @@ You should have received a copy of the GNU General Public License along with thi
 }
 
 -(TFEditableObject*) valueAtLocation:(CGPoint) location{
-    for (TFEditableObject* value in _values) {
+    for (TFEditableObject* value in self.values) {
         if([value testPoint:location]){
             return value;
         }
@@ -528,7 +559,7 @@ You should have received a copy of the GNU General Public License along with thi
 }
 
 -(TFEditableObject*) triggerAtLocation:(CGPoint) location{
-    for (TFEditableObject* trigger in _triggers) {
+    for (TFEditableObject* trigger in self.triggers) {
         if([trigger testPoint:location]){
             return trigger;
         }
@@ -541,7 +572,7 @@ You should have received a copy of the GNU General Public License along with thi
 
 -(NSMutableArray*) actionsForTarget:(TFEditableObject*) target{
     NSMutableArray * array = [NSMutableArray array];
-    for (TFEventActionPair * pair in _eventActionPairs) {
+    for (TFEventActionPair * pair in self.eventActionPairs) {
         if(pair.action.target == target){
             [array addObject:pair];
         }
@@ -551,7 +582,7 @@ You should have received a copy of the GNU General Public License along with thi
 
 -(NSMutableArray*) actionsForSource:(TFEditableObject*) source{
     NSMutableArray * array = [NSMutableArray array];
-    for (TFEventActionPair * pair in _eventActionPairs) {
+    for (TFEventActionPair * pair in self.eventActionPairs) {
         if(pair.action.source == source){
             [array addObject:pair];
         }
@@ -561,7 +592,7 @@ You should have received a copy of the GNU General Public License along with thi
 
 -(void) deregisterActionsForObject:(TFEditableObject*) object{
     NSMutableArray * toRemove = [NSMutableArray array];
-    for (TFEventActionPair * pair in _eventActionPairs) {
+    for (TFEventActionPair * pair in self.eventActionPairs) {
         if(pair.action.target == object || pair.action.source == object){
             [toRemove addObject:pair];
         }
@@ -595,7 +626,7 @@ You should have received a copy of the GNU General Public License along with thi
 -(void) deregisterAction:(TFAction*) action{
     TFEventActionPair * toRemove;
     NSInteger idx = 0;
-    for (TFEventActionPair * pair in _eventActionPairs) {
+    for (TFEventActionPair * pair in self.eventActionPairs) {
         if(pair.action == action){
             toRemove = pair;
             break;
@@ -603,7 +634,6 @@ You should have received a copy of the GNU General Public License along with thi
         idx++;
     }
     [_eventActionPairs removeObject:toRemove];
-    
     
     //Juan check
     //[toRemove.action.source removeConnectionTo:toRemove.action.target];
@@ -681,15 +711,8 @@ You should have received a copy of the GNU General Public License along with thi
     [self addWire:wire];
 }
 
--(void) removeAllWiresFrom:(id) object notify:(BOOL) notify{
-    NSMutableArray * toRemove = [NSMutableArray array];
-    for (THWire * wire in self.wires) {
-        if(wire.obj1.hardware == object){
-            [toRemove addObject:wire];
-        }
-    }
-    
-    for (THWire * wire in toRemove) {
+-(void) removeWires:(NSArray*) wires notify:(BOOL) notify{
+    for (THWire * wire in wires) {
         [wire prepareToDie];
         [self.wires removeObject:wire];
         if(notify){
@@ -698,6 +721,26 @@ You should have received a copy of the GNU General Public License along with thi
     }
 }
 
+-(void) removeAllWiresFromElementPin:(THElementPinEditable*) elementPin notify:(BOOL) notify{
+    NSMutableArray * toRemove = [NSMutableArray array];
+    for (THWire * wire in self.wires) {
+        if(wire.obj1 == elementPin){
+            [toRemove addObject:wire];
+        }
+    }
+    [self removeWires:toRemove notify:notify];
+}
+
+-(void) removeAllWiresFrom:(id) object notify:(BOOL) notify{
+    NSMutableArray * toRemove = [NSMutableArray array];
+    for (THWire * wire in self.wires) {
+        if(wire.obj1.hardware == object){
+            [toRemove addObject:wire];
+        }
+    }
+    
+    [self removeWires:toRemove notify:notify];
+}
 
 -(void) removeAllWiresTo:(THBoardEditable*) board notify:(BOOL) notify{
     NSMutableArray * toRemove = [NSMutableArray array];
@@ -850,6 +893,7 @@ enum zPositions{
     [allObjects addObjectsFromArray:self.values];
     [allObjects addObjectsFromArray:self.boards];
     [allObjects addObjectsFromArray:self.hardwareComponents];
+    [allObjects addObjectsFromArray:self.otherHardwareComponents];
     [allObjects addObjectsFromArray:self.iPhoneObjects];
     [allObjects addObjectsFromArray:self.clothes];
     return allObjects;

@@ -131,11 +131,13 @@ You should have received a copy of the GNU General Public License along with thi
 }
 
 -(void) dehighlightCurrentEvent{
-    
-    NSInteger idx = self.tableView.indexPathForSelectedRow.row;
-    TFEditableObject * editable = (TFEditableObject*) self.editableObject;
-    TFEvent * event = [editable.events objectAtIndex:idx];
-    [self dehighlightForEvent:event];
+    NSIndexPath * selectedRowIdx = self.tableView.indexPathForSelectedRow;
+    if(selectedRowIdx){
+        NSInteger idx = selectedRowIdx.row;
+        TFEditableObject * editable = (TFEditableObject*) self.editableObject;
+        TFEvent * event = [editable.events objectAtIndex:idx];
+        [self dehighlightForEvent:event];
+    }
 }
 
 -(void) tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -187,18 +189,23 @@ You should have received a copy of the GNU General Public License along with thi
     return cell;
 }
 
--(void)updateConnectionLabel {
+-(void) updateConnectionLabel {
     THProject * project = [THDirector sharedDirector].currentProject;
     TFEditableObject * editable = (TFEditableObject*) self.editableObject;
     NSMutableArray * actions = [project actionsForSource:editable];
     self.connectionCountLabel.text = [NSString stringWithFormat:@"%d connections",actions.count];
+    
+    if(actions.count == 0){
+        self.removeButton.enabled = NO;
+    } else {
+        self.removeButton.enabled = YES;
+    }
 }
 
 -(void) reloadState{
     
     [self.tableView reloadData];
     [self updateConnectionLabel];
-    
     
     CGRect tableFrame = self.tableView.frame;
     self.tableView.frame = CGRectMake(tableFrame.origin.x, tableFrame.origin.y, tableFrame.size.width, self.tableView.contentSize.height);
@@ -217,30 +224,30 @@ You should have received a copy of the GNU General Public License along with thi
     [self.sizeDelegate properties:self didChangeSize:self.view.frame.size];
 }
 
--(void)removeButtonDown:(id)sender {
-
+-(void) updateConnectedObjectHighlights:(BOOL) highlighted{
+    
     TFEditableObject * editable = (TFEditableObject*) self.editableObject;
-    NSArray * connections = editable.connections;
-    for (TFConnectionLine * connection in connections) {
-        TFEditableObject * object = connection.obj2;
-        object.highlighted = YES;
+    THProject * project = [THDirector sharedDirector].currentProject;
+    NSArray * actions = [project actionsForSource:editable];
+    
+    for (TFEventActionPair * eventActionPair in actions) {
+        
+        TFEditableObject * object = eventActionPair.action.target;
+        object.highlighted = highlighted;
     }
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationStartRemovingConnections object:nil];
-    /*
-    TFEditor * editor = (TFEditor*) [TFDirector sharedDirector].currentLayer;
-    editor.removeConnections = YES;*/
+    THEditor * editor = (THEditor*) [THDirector sharedDirector].currentLayer;
+    editor.removingConnections = highlighted;
+}
+
+-(void)removeButtonDown:(id)sender {
+    [self dehighlightCurrentEvent];
+    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+    [self updateConnectedObjectHighlights:YES];
 }
 
 -(void) stopRemovingConnections{
-    TFEditableObject * editable = (TFEditableObject*) self.editableObject;
-    NSArray * connections = editable.connections;
-    for (TFConnectionLine * connection in connections) {
-        TFEditableObject * object = connection.obj2;
-        object.highlighted = NO;
-    }
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationStopRemovingConnections object:nil];
+    [self updateConnectedObjectHighlights:NO];
 }
 
 -(void)removeButtonUp:(id)sender {
@@ -253,13 +260,20 @@ You should have received a copy of the GNU General Public License along with thi
 
 -(void) connectionMade:(NSNotification*) notification{
     TFConnectionLine * connection = notification.object;
-    if(connection.obj2 == self.editableObject){
+    if(connection.obj1 == self.editableObject){
         [self.tableView reloadData];
     }
 }
 
+-(void) objectRemoved:(NSNotification*) notification{
+    [self.tableView reloadData];
+    [self updateConnectionLabel];
+}
+
 -(void) viewWillAppear:(BOOL)animated{
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(connectionMade:) name:kNotificationConnectionMade object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(objectRemoved:) name:kNotificationObjectRemoved object:nil];
+    
     [super viewWillAppear:animated];
 }
 

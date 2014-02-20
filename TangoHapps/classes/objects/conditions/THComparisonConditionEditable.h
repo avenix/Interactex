@@ -46,21 +46,26 @@ You should have received a copy of the GNU General Public License along with thi
 
 @class THComparisonCondition;
 @class THComparatorEditableProperties;
+@class TFMethodInvokeAction;
 
-@interface THComparisonConditionEditable : THConditionEditableObject <NSCoding>
+extern NSString * const kConditionTypeStrings[kNumConditionTypes];
+extern NSString * const kConditionTypeDescriptionStrings[kNumConditionTypes];
+
+@interface THComparisonConditionEditable : THConditionEditableObject
 {
     THComparatorEditableProperties * _currentComparatorProperties;
 }
 
-@property (nonatomic, strong) TFEditableObject * obj1;
-@property (nonatomic, strong) TFEditableObject * obj2;
+@property (nonatomic, weak) TFMethodInvokeAction * action1;
+@property (nonatomic, weak) TFMethodInvokeAction * action2;
 
-@property (nonatomic, copy) NSString * propertyName1;
-@property (nonatomic, copy) NSString * propertyName2;
+@property (nonatomic, readonly) NSString * propertyName1;
+@property (nonatomic, readonly) NSString * propertyName2;
 
 @property (nonatomic) float value1;
 @property (nonatomic) float value2;
 
 @property (nonatomic) THConditionType type;
+@property (nonatomic, readonly) NSString * conditionTypeString;
 
 @end

@@ -57,16 +57,13 @@ extern float const kLineAcceptedTiltingTime;
 
 extern NSString * const kNotificationObjectAdded;
 extern NSString * const kNotificationObjectRemoved;
-
 extern NSString * const kNotificationObjectSelected;
 extern NSString * const kNotificationObjectDeselected;
-
 extern NSString * const kNotificationPaletteItemSelected;
 extern NSString * const kNotificationPaletteItemDeselected;
-
 extern NSString * const kNotificationConnectionMade;
-
 extern NSString * const kConnectionMadeEffect;
+extern NSString * const kNotificationInvocationCompleted;
 
 extern float kPaletteItemsPadding;
 extern float kPaletteItemSize;

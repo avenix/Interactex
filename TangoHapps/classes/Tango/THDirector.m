@@ -49,7 +49,7 @@ You should have received a copy of the GNU General Public License along with thi
 #import "THProjectViewController.h"
 //#import "THEditorToolsDataSource.h"
 #import "THServerController.h"
-#import "THEditorToolsViewController.h"
+#import "TFFileUtils.h"
 
 @implementation THDirector
 
@@ -136,23 +136,18 @@ static THDirector * _sharedInstance = nil;
 
 #pragma Mark - Server Delegate
 
--(void) updateServerButtonState{
-    
-    self.projectController.toolsController.pushItem.enabled = (self.serverController.peers.count > 0);
-}
-
 -(void) server:(THServerController*)controller peerConnected:(NSString*)peerName {
     [[SimpleAudioEngine sharedEngine] playEffect:@"peer_connected.mp3"];
-    [self updateServerButtonState];
+    [self.projectController updatePushButtonState];
 }
 
 -(void) server:(THServerController*)controller peerDisconnected:(NSString*)peerName {
     [[SimpleAudioEngine sharedEngine] playEffect:@"peer_disconnected.mp3"];
-    [self updateServerButtonState];
+    [self.projectController updatePushButtonState];
 }
 
 -(void) server:(THServerController*)controller isReadyForSceneTransfer:(BOOL)ready {
-    [self updateServerButtonState];
+    [self.projectController updatePushButtonState];
 }
 
 -(void) server:(THServerController*)controller isTransferring:(BOOL)transferring {

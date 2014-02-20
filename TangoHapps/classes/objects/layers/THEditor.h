@@ -77,32 +77,26 @@ typedef enum {
 
 @interface THEditor : TFLayer <TFPaletteViewControllerDelegate,TFMethodSelectionPopupDelegate, THPropertySelectionPopupDelegate>{
     
-    THPinEditable * _currentHighlightedPin;
     THPropertySelectionPopup * _propertySelectionPopup;
     TFMethodSelectionPopup * _methodSelectionPopup;
-    
     CCSprite * dragSprite;
-    
-    TFGestureState gestureState;
-    
-    THEditorToolsViewController * _editorToolsController;
-    
-    THPaletteItem * _currentPaletteItem;
     CGPoint _draggedObjectPreviousPosition;
-    
 }
 
 @property (nonatomic, readonly) BOOL isLilypadMode;
-
+@property (nonatomic, weak) THPinEditable * currentHighlightedPin;
+@property (nonatomic, weak) THPaletteItem * currentPaletteItem;
+@property (nonatomic) TFGestureState gestureState;
 @property (nonatomic) float zoomLevel;
 @property (nonatomic) CGPoint displacement;
 @property (nonatomic) CCLayer * zoomableLayer;
-
-@property(nonatomic) TFConnectionLine * currentConnection;
-@property(nonatomic) TFEditableObject * currentObject;
+@property(nonatomic, weak) THEditorToolsViewController * editorToolsController;
+@property(nonatomic, strong) TFConnectionLine * currentConnection;
+@property(nonatomic, weak) TFEditableObject * currentObject;
 @property(nonatomic) TFEditorState state;
 @property(nonatomic, weak) id<THEditorDragDelegate> dragDelegate;
-@property(nonatomic) BOOL removeConnections;
+@property(nonatomic) BOOL removingConnections;
+@property(nonatomic, strong) NSMutableArray * additionalConnections;
 
 //lilypad mode
 -(void) startLilypadMode;
@@ -112,9 +106,14 @@ typedef enum {
 //object selection
 -(void) unselectCurrentObject;
 -(void) selectObject:(TFEditableObject*) editableObject;
-
 -(void) handleConnectionEndedAt:(CGPoint) location;
-
 -(void) handleIphoneVisibilityChangedTo:(BOOL) visible;
+
+//connection lines
+-(void) addConnectionLine:(TFConnectionLine*) connection;
+-(void) removeConnectionLine:(TFConnectionLine*) connection;
+
+//wires lilypad mode
+-(void) updateWiresVisibility;
 
 @end

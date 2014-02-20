@@ -119,8 +119,11 @@ You should have received a copy of the GNU General Public License along with thi
     minusPin.hardware = self;
     THElementPin * sclPin = [THElementPin pinWithType:kElementPintypeScl];
     sclPin.hardware = self;
+    sclPin.defaultBoardPinMode = kPinModeI2C;
+    
     THElementPin * sdaPin = [THElementPin pinWithType:kElementPintypeSda];
     sdaPin.hardware = self;
+    sdaPin.defaultBoardPinMode = kPinModeI2C;
     
     
     [self.pins addObject:minusPin];

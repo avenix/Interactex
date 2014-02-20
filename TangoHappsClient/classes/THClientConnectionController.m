@@ -98,9 +98,6 @@ You should have received a copy of the GNU General Public License along with thi
 -(void)connectToServerWithPeerID:(NSString*)peerID {
     
     if(!self.isConnectedToServer){
-        //[self disconnectFromServer];
-        
-        //connectedPeerID = peerID;
         [session connectToPeer:peerID withTimeout:10];
     }
 }
@@ -113,15 +110,14 @@ didChangeState:(GKPeerConnectionState)state {
     
     switch (state) {
         case GKPeerStateUnavailable:{
-            //[self removeServerWithPeerId:peerID];
+
             transferAgent = nil;
             break;
         }
-            
+
         case GKPeerStateAvailable:{//connect to first thing available
             
             [self connectToServerWithPeerID:peerID];
-            
             break;
         }
 

@@ -1,0 +1,1 @@
+eGMCP (Generic Microcontroller Protocol) is a generic protocol for controlling microcontroller Pins remotely. It is similar to Firmata, but it does not target the Arduino microcontrollers exclusively. For instance, it does not work with ports but directly with Pins.

@@ -43,6 +43,8 @@ You should have received a copy of the GNU General Public License along with thi
 #import <UIKit/UIKit.h>
 
 @class THImagePickerController;
+@class ALAsset;
+@class ALAssetsLibrary;
 
 extern float const kImagePickerPadding;
 
@@ -50,21 +52,18 @@ extern float const kImagePickerPadding;
 - (void)imagePicker:(THImagePickerController*) picker didSelectImage:(UIImage*)image imageName:(NSString*) imageName;
 @end
 
-@interface THImagePickerController : UIViewController <UIGestureRecognizerDelegate> {
-    
+@interface THImagePickerController : UIViewController {
     CGPoint _currentPos;
-    NSMutableArray * _images;
-    NSMutableArray * _imageNames;
     UIActivityIndicatorView * _activityIndicator;
 }
 
-@property (nonatomic, strong) UIImageView *currentImageView;
-@property (nonatomic, strong) UIButton *okButton;
-@property (nonatomic, strong) UIScrollView *imagesContainer;
-@property (nonatomic, copy) NSString * imageName;
-
+@property (nonatomic, strong) ALAssetsLibrary * library;
+@property (nonatomic, strong) NSMutableArray * thumbnails;
+@property (nonatomic, strong) NSMutableArray * imageAssets;
+@property (nonatomic, strong) UIImageView * currentImageView;
+@property (nonatomic, strong) UIButton * okButton;
+@property (nonatomic, strong) UIScrollView * imagesContainer;
+@property (nonatomic, strong) ALAsset * selectedAsset;
 @property (nonatomic, weak) id<TFImagePickerDelegate> delegate;
-
-- (IBAction) okButtonTapped:(UIButton *)sender;
 
 @end

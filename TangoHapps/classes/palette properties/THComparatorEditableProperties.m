@@ -43,6 +43,7 @@ You should have received a copy of the GNU General Public License along with thi
 #import "THComparatorEditableProperties.h"
 #import "THComparisonConditionEditable.h"
 #import "THComparisonCondition.h"
+#import "TFMethodInvokeAction.h"
 
 @implementation THComparatorEditableProperties
 @synthesize operatorTypeLabel;
@@ -50,12 +51,57 @@ You should have received a copy of the GNU General Public License along with thi
 @synthesize object2Button;
 @synthesize operatorTypeControl;
 
--(NSString *)title
-{
+-(NSString *)title {
     return @"Comparator";
 }
 
--(NSArray*) selectedConnections{
+-(void) updateInfoLabel{
+    
+    THComparisonConditionEditable * condition = (THComparisonConditionEditable*) self.editableObject;
+    NSString * text = @"";
+    
+    
+    if(condition.action1 == nil && condition.action2 == nil){
+
+        text = @"Set comparator values for comparator to work. You can do this by dragging connections from other objects to the comparator";
+        
+    } else if(condition.action1 == nil){
+        
+        text = @"Set first value for comparator to work";
+        
+    } else if(condition.action2 == nil){
+        
+        text = @"Set second value for comparator to work";
+        
+    } else {
+        
+        if(condition.action1.firstParam == nil || condition.action2.firstParam == nil){
+            
+            text = @"The comparator requires numeric input values. Either connect an object's event which has a numeric parameter (such as LED's intensity changed event), or connect a property to the connection between the input objet and the comparator";
+            
+        } else {
+            
+            TFEditableObject * object1 = condition.action1.firstParam.target;
+            TFEditableObject * object2 = condition.action2.firstParam.target;
+            
+            //if it was a simulable object, then the event source is the same as the parameter source
+            if([object1 isKindOfClass:[TFSimulableObject class]]){
+                object1 = condition.action1.source;
+            }
+            
+            if([object2 isKindOfClass:[TFSimulableObject class]]){
+                object2 = condition.action2.source;
+            }
+            
+            NSString * conditionStr = condition.conditionTypeString;
+            text = [NSString stringWithFormat:@"When the %@'s %@ property is %@ than the %@'s %@ property, the comparator will trigger the conditionIsTrue event. Otherwise it will trigger the conditionIsFalse event", object1, condition.action1.firstParam.property.name, conditionStr, object2, condition.action2.firstParam.property.name];
+        }
+    }
+    
+    self.label.text = text;
+}
+
+-(NSArray*) selectedConnections {
     NSMutableArray * selectedConnections = [NSMutableArray array];
     if(button1Down){
         [selectedConnections addObject:[NSNumber numberWithInt:0]];
@@ -66,7 +112,7 @@ You should have received a copy of the GNU General Public License along with thi
     return selectedConnections;
 }
 
--(void) updateOperatorLabel{
+-(void) updateOperatorLabel {
     THComparisonConditionEditable * condition = (THComparisonConditionEditable*) self.editableObject;
     
     NSInteger idx = condition.type;
@@ -74,25 +120,34 @@ You should have received a copy of the GNU General Public License along with thi
     self.operatorTypeLabel.text = conditionString;
 }
 
--(void) updateButtons{
+-(void) updateButtons {
+    
     THComparisonConditionEditable * conditionEditable = (THComparisonConditionEditable*) self.editableObject;
     
     NSString * title = @"";
-    if(conditionEditable.obj1 == nil){
+    
+    if(conditionEditable.action1.firstParam == nil){
+        
         self.object1Button.enabled = NO;
+        
     } else {
-        title = [NSString stringWithFormat:@"%@ (%@)",conditionEditable.obj1,conditionEditable.propertyName1];
+        
+        title = [NSString stringWithFormat:@"%@ (%@)",conditionEditable.action1.firstParam.target,conditionEditable.action1.firstParam.property.name];
         self.object1Button.enabled = YES;
     }
     
     [self.object1Button setTitle:title forState:UIControlStateNormal];
     
-    if(conditionEditable.obj2 == nil){
+    if(conditionEditable.action2.firstParam == nil){
+        
         title = @"";
         self.object2Button.enabled = NO;
+        
     } else {
-        title = [NSString stringWithFormat:@"%@ (%@)",conditionEditable.obj2,conditionEditable.propertyName2];
+        
+        title = [NSString stringWithFormat:@"%@ (%@)",conditionEditable.action2.firstParam.target,conditionEditable.action2.firstParam.property.name];
         self.object2Button.enabled = YES;
+        
     }
     
     [self.object2Button setTitle:title forState:UIControlStateNormal];
@@ -114,36 +169,56 @@ You should have received a copy of the GNU General Public License along with thi
     return connection;
 }
 
-/*
 -(void) addConnection:(TFConnectionLine*) connection{
-    TFEditor * editor = (TFEditor*) [THDirector sharedDirector].currentLayer;
+    THEditor * editor = (THEditor*) [THDirector sharedDirector].currentLayer;
     [editor addConnectionLine:connection];
 }
 
 -(void) removeConnection:(TFConnectionLine*) connection{
     
-    TFEditor * editor = (TFEditor*) [THDirector sharedDirector].currentLayer;
+    THEditor * editor = (THEditor*) [THDirector sharedDirector].currentLayer;
     [editor removeConnectionLine:connection];
-}*/
+}
 
 -(void) selectionChanged{
     
-    //[Editor sharedInstance].selectedConnections = self.selectedConnections;
-    //THComparisonConditionEditable * condition = (THComparisonConditionEditable*) self.editableObject;
-    /*
+    THComparisonConditionEditable * condition = (THComparisonConditionEditable*) self.editableObject;
+    
+    TFEditableObject * object1 = condition.action1.firstParam.target;
+    TFEditableObject * object2 = condition.action2.firstParam.target;
+    
+    //if it was a simulable object, then the event source is the same as the parameter source
+    if([object1 isKindOfClass:[TFSimulableObject class]]){
+        object1 = condition.action1.source;
+    }
+    
+    if([object2 isKindOfClass:[TFSimulableObject class]]){
+        object2 = condition.action2.source;
+    }
+    
     if(button1Down){
-        _connection1 = [self createConnectionLineFor:condition.obj1];
+        
+        object1.highlighted = YES;
+        self.connection1 = [self createConnectionLineFor:object1];
         [self addConnection:_connection1];
+        
     } else {
+        
+        object1.highlighted = NO;
         [self removeConnection:_connection1];
     }
     
     if(button2Down){
-        _connection2 = [self createConnectionLineFor:condition.obj2];
+        
+        object2.highlighted = YES;
+        self.connection2 = [self createConnectionLineFor:object2];
         [self addConnection:_connection2];
+        
     } else {
+        
+        object2.highlighted = NO;
         [self removeConnection:_connection2];
-    }*/
+    }
 }
 
 - (IBAction)button1Up:(id)sender {
@@ -170,31 +245,43 @@ You should have received a copy of the GNU General Public License along with thi
 - (IBAction)operationTypeChanged:(id)sender {
     
     THComparisonConditionEditable * condition = (THComparisonConditionEditable*) self.editableObject;
-    
     condition.type = self.operatorTypeControl.selectedSegmentIndex;
+    
     [self updateOperatorLabel];
+    [self updateInfoLabel];
 }
 
 -(void) reloadState{
     [self updateOperatorLabel];
     [self updateButtons];
     [self updateOperatorType];
+    [self updateInfoLabel];
 }
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-
+-(void) handleInvocationFilled:(NSNotification*) notification{
     
+    THComparisonConditionEditable * condition = (THComparisonConditionEditable*) self.editableObject;
+    
+    TFPropertyInvocation * propertyInvocation1 = condition.action1.firstParam;
+    TFPropertyInvocation * propertyInvocation2 = condition.action2.firstParam;
+    
+    id invocation = notification.object;
+    if(invocation == propertyInvocation1 || invocation == propertyInvocation2){
+        [self updateButtons];
+        [self updateInfoLabel];
+    }
+}
+
+-(void) viewWillAppear:(BOOL)animated{
+    
+    id c = [NSNotificationCenter defaultCenter];
+    [c addObserver:self selector:@selector(handleInvocationFilled:) name:kNotificationInvocationCompleted object:nil];
+}
+
+-(void) viewWillDisappear:(BOOL)animated{
+    
+    id c = [NSNotificationCenter defaultCenter];
+    [c removeObserver:self];
 }
 
 - (void)viewDidUnload

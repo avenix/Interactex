@@ -52,6 +52,7 @@ You should have received a copy of the GNU General Public License along with thi
 @property (nonatomic, readonly) NSInteger numberOfDigitalPins;
 @property (nonatomic, readonly) NSInteger numberOfAnalogPins;
 @property (nonatomic, strong) NSMutableArray * pins;
+@property (nonatomic) BOOL showsWires;
 
 -(THBoardPinEditable*) minusPin;
 -(THBoardPinEditable*) plusPin;

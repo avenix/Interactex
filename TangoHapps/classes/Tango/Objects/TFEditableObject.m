@@ -77,7 +77,6 @@ You should have received a copy of the GNU General Public License along with thi
         self.active = YES;
         
         self.z = kDefaultZ;
-        _connections = [NSMutableArray array];
         [self loadEditableObject];
     }
     return self;
@@ -99,7 +98,6 @@ You should have received a copy of the GNU General Public License along with thi
     self.z = [decoder decodeIntForKey:@"z"];
     self.simulableObject = [decoder decodeObjectForKey:@"object"];
     self.acceptsConnections = [decoder decodeBoolForKey:@"acceptsConnections"];
-    _connections = [decoder decodeObjectForKey:@"connections"];
     
     return self;
 }
@@ -114,7 +112,6 @@ You should have received a copy of the GNU General Public License along with thi
     [coder encodeInt:self.z forKey:@"z"];
     [coder encodeObject:self.simulableObject forKey:@"object"];
     [coder encodeBool:self.acceptsConnections forKey:@"acceptsConnections"];
-    [coder encodeObject:self.connections forKey:@"connections"];
 }
 
 -(id)copyWithZone:(NSZone *)zone {
@@ -166,20 +163,6 @@ You should have received a copy of the GNU General Public License along with thi
 
 #pragma mark - Connections
 
--(void) removeConnectionTo:(TFEditableObject*) object{
-    
-    TFConnectionLine * toRemove = nil;
-    for (TFConnectionLine * connection in _connections) {
-        if(connection.obj2 == object){
-            toRemove = connection;
-        }
-    }
-    
-    if(toRemove){
-        [_connections removeObject:toRemove];
-    }
-}
-
 -(BOOL) acceptsConnectionsTo:(TFEditableObject*)object{
     
     for (TFEvent * event in self.events) {
@@ -197,17 +180,6 @@ You should have received a copy of the GNU General Public License along with thi
     }
     
     return NO;
-}
-
--(NSArray*) connectionsWithTarget:(TFEditableObject*) target{
-    NSMutableArray * connections = [NSMutableArray array];
-    
-    for (TFConnectionLine * connection in self.connections) {
-        if(connection.obj2 == target){
-            [connections addObject:connection];
-        }
-    }
-    return connections;
 }
 
 #pragma mark - Actions
@@ -376,11 +348,17 @@ You should have received a copy of the GNU General Public License along with thi
 
 -(void) draw {
     
-    if(self.selected){
+    if(self.selected || self.highlighted){
         
         glLineWidth(1);
         
-        ccDrawColor4B(kDefaultObjectSelectionColor.r, kDefaultObjectSelectionColor.g, kDefaultObjectSelectionColor.b, kDefaultObjectSelectionColor.a);
+        if(self.highlighted){
+            
+            ccDrawColor4B(self.highlightColor.r, self.highlightColor.g, self.highlightColor.b, self.highlightColor.a);
+            
+        } else {
+            ccDrawColor4B(kDefaultObjectSelectionColor.r, kDefaultObjectSelectionColor.g, kDefaultObjectSelectionColor.b, kDefaultObjectSelectionColor.a);
+        }
         
         float kSelectionPadding = 5;
         
@@ -426,8 +404,6 @@ You should have received a copy of the GNU General Public License along with thi
     _triggerableProperties = nil;
     _viewableEditableProperties = nil;
     _invokableEditableProperties = nil;
-    
-    _connections = nil;
     
     [self.simulableObject prepareToDie];
     _simulableObject = nil;

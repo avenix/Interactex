@@ -45,8 +45,6 @@ You should have received a copy of the GNU General Public License along with thi
 
 #define kNumConditionTypes 3
 
-extern NSString * const kConditionTypeStrings[kNumConditionTypes];
-
 typedef enum{
     kConditionTypeSmallerThan,
     kConditionTypeEquals,

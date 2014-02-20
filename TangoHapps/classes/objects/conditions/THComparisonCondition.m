@@ -42,8 +42,6 @@ You should have received a copy of the GNU General Public License along with thi
 
 #import "THComparisonCondition.h"
 
-NSString * const kConditionTypeStrings[kNumConditionTypes] = {@"<",@"=",@">"};
-
 @implementation THComparisonCondition
 
 #pragma mark - Archiving

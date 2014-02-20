@@ -48,5 +48,6 @@ You should have received a copy of the GNU General Public License along with thi
 
 @property (nonatomic, copy) NSString * text;
 @property (nonatomic) NSInteger numLines;
+-(void) appendText:(id) text;
 
 @end

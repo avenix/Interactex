@@ -90,15 +90,14 @@ extern NSString* const kTransferActionTexts[kNumTransferActions];
 @property (readonly) NSString *peerID;
 @property (readonly) NSUInteger queuedActions;
 
-+ (THTransferAgent*)masterAgentForClientPeerID:(NSString*)peerID session:(GKSession*)session;
-+ (THTransferAgent*)slaveAgentForServerPeerID:(NSString*)peerID session:(GKSession*)session;
-- (id)initWithSession:(GKSession*)session peerID:(NSString*)peerID inMode:(THTransferAgentMode)mode;
-- (void)receiveData:(NSData*)data;
++(THTransferAgent*) masterAgentForClientPeerID:(NSString*)peerID session:(GKSession*)session;
++(THTransferAgent*) slaveAgentForServerPeerID:(NSString*)peerID session:(GKSession*)session;
+-(id) initWithSession:(GKSession*)session peerID:(NSString*)peerID inMode:(THTransferAgentMode)mode;
+-(void) receiveData:(NSData*)data;
+-(void) queueAction:(THTransferAgentAction)action withObject:(id)object;
+-(void) cancelQueuedActions;
+-(void) cancelCurrentAndQueuedActions;
 
-- (void)queueAction:(THTransferAgentAction)action withObject:(id)object;
-- (void)cancelQueuedActions;
-- (void)cancelCurrentAndQueuedActions;
-
-- (NSString *)labelForAction:(THTransferAgentAction)action;
+-(NSString*) labelForAction:(THTransferAgentAction)action;
 
 @end

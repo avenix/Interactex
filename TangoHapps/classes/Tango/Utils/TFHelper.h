@@ -59,7 +59,6 @@ You should have received a copy of the GNU General Public License along with thi
 +(void) drawLines:(NSArray *) connections;
 +(void) drawWires:(NSArray *) wires;
 +(void) restoreDrawingState;
-+(void) drawLinesForObjects:(NSArray*)objects;
 
 //+(NSBundle *)frameworkBundle;
 +(UILabel*) navBarTitleLabelNamed:(NSString*) name;

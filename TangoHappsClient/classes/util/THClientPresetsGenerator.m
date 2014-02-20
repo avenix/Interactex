@@ -58,6 +58,7 @@ You should have received a copy of the GNU General Public License along with thi
 #import "THI2CRegister.h"
 #import "THMonitor.h"
 #import "THMusicPlayer.h"
+#import "THPureData.h"
 
 @implementation THClientPresetsGenerator
 
@@ -69,22 +70,16 @@ NSString * const kAnalogInputProjectName = @"Analog Input";
 NSString * const kMCUCompassProjectName = @"MCU";
 NSString * const kLSMCompassProjectName = @"LSM";
 NSString * const kMusicPlayerProjectName = @"Music Player";
+NSString * const kPureDataProjectName = @"PureData";
 
 -(id) init{
     
     self = [super init];
     if(self){
-       
         
     }
     return self;
 }
-/*
--(void) loadPresets{
-    
-    NSString *filePath = [TFFileUtils dataFile:kProjectProxiesFileName inDirectory:@""];
-    _presets = [NSKeyedUnarchiver unarchiveObjectWithFile:filePath];
-}*/
 
 -(void) generatePresets{
     
@@ -98,6 +93,7 @@ NSString * const kMusicPlayerProjectName = @"Music Player";
     [array addObject:[self lsmProject]];
     [array addObject:[self mcuProject]];
     [array addObject:[self musicPlayerProject]];
+    [array addObject:[self pureDataProject]];
     
     
     NSMutableArray * imagesArray = [NSMutableArray array];
@@ -108,6 +104,7 @@ NSString * const kMusicPlayerProjectName = @"Music Player";
     [imagesArray addObject:[UIImage imageNamed:@"LSMCompass.png"]];
     [imagesArray addObject:[UIImage imageNamed:@"accelerometer.png"]];
     [imagesArray addObject:[UIImage imageNamed:@"musicPlayer.png"]];
+    [imagesArray addObject:[UIImage imageNamed:@"pureData.png"]];
     
     for (int i = 0 ; i < array.count ; i++) {
         
@@ -122,25 +119,6 @@ NSString * const kMusicPlayerProjectName = @"Music Player";
         [_presets addObject:proxy];
     }
 }
-
-/*
--(THClientProject*) projectNamed:(NSString *)name{
-    
-    if([name isEqualToString:kDigitalOutputSceneName]){
-        return [self digitalOutputProject];
-    } else if([name isEqualToString:kDigitalInputSceneName]){
-        return [self digitalInputProject];
-    } else if([name isEqualToString:kBuzzerSceneName]){
-        return [self buzzerProject];
-    } else if([name isEqualToString:kAnalogOutputSceneName]){
-        return [self analogOutputProject];
-    } else if([name isEqualToString:kAnalogInputSceneName]){
-        return [self analogInputProject];
-    } else if([name isEqualToString:kCompassSceneName]){
-        return [self compassProject];
-    }
-    return nil;
-}*/
 
 -(THClientProject*) defaultClientProject{
     
@@ -584,6 +562,45 @@ NSString * const kMusicPlayerProjectName = @"Music Player";
     THElementPin * buttonpin = [lilybutton.pins objectAtIndex:0];
     [lilypinButton attachPin:buttonpin];
     [buttonpin attachToPin:lilypinButton];
+    
+    return project;
+}
+
+
+-(THClientProject*) pureDataProject{
+    
+    THClientProject * project = [self defaultClientProject];
+    
+    project.name = kPureDataProjectName;
+    
+    //board
+    THLilyPad * lilypad = [[THLilyPad alloc] init];
+    project.boards = [NSMutableArray arrayWithObject:lilypad];
+    
+    //iphone objects
+    THLabel * label = [[THLabel alloc] init];
+    label.text = @"press the button";
+    label.position = CGPointMake(150, 100);
+    label.width = 200;
+    label.height = 100;
+    label.numLines = 2;
+    
+    THiPhoneButton * button = [[THiPhoneButton alloc] init];
+    button.text = @"Start Pure Data";
+    button.position = CGPointMake(250, 200);
+    
+    project.iPhoneObjects = [NSMutableArray arrayWithObjects:label,button, nil];
+    
+    THPureData * pureData = [[THPureData alloc] init];
+    project.actions = [NSMutableArray arrayWithObjects:pureData, nil];
+    
+    //start playing action
+    TFMethod * startMethod = [pureData.methods objectAtIndex:2];
+    TFMethodInvokeAction * startPlayingAction = [[TFMethodInvokeAction alloc] initWithTarget:pureData method:startMethod];
+    TFEvent * event = [button.events objectAtIndex:0];
+    startPlayingAction.source = button;
+    [project registerAction:startPlayingAction forEvent:event];
+
     
     return project;
 }

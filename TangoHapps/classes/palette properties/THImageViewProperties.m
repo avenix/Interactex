@@ -82,8 +82,8 @@ You should have received a copy of the GNU General Public License along with thi
         THImageViewEditable * imageView = (THImageViewEditable*) self.editableObject;
         imageView.image = image;
         [self updateImageView];
-        [self.imagePickerPopover dismissPopoverAnimated:YES];
     }
+    [self.imagePickerPopover dismissPopoverAnimated:YES];
 }
 
 - (IBAction)changeTapped:(id)sender {

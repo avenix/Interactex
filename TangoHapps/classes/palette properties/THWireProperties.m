@@ -43,6 +43,7 @@ You should have received a copy of the GNU General Public License along with thi
 #import "THWireProperties.h"
 #import "THColorPicker.h"
 #import "THWire.h"
+#import "THBoardPinEditable.h"
 
 @implementation THWireProperties
 
@@ -53,6 +54,13 @@ You should have received a copy of the GNU General Public License along with thi
 -(void) reloadState{
     
     [self updateColor];
+    [self updateChangeButton];
+}
+
+-(void) updateChangeButton{
+    
+    THWire * wire = (THWire*) self.editableObject;
+    self.changeColorButton.enabled = wire.canColorBeChanged;
 }
 
 -(void) updateColor {

@@ -73,7 +73,8 @@ typedef enum{
     kHardwareTypeVibeBoard,
     kHardwareTypeTemperatureSensor,//10
     kHardwareTypeAccelerometer,
-    kHardwareTypeMPUCompass
+    kHardwareTypeMPUCompass,
+    kHardwareTypeLipoBattery
 }THHardwareType;
 
 #define kNumPinTypes 4
@@ -241,3 +242,7 @@ extern float const kBuzzerMinFrequency;
 #define kLilypadNumPwmPins 6
 
 extern NSInteger const kLilypadPwmPins[kLilypadNumPwmPins];
+
+extern float const kGraphViewGraphOffsetY;
+extern CGSize const kGraphViewAxisLabelSize;
+extern float const kGraphViewAxisLineWidth;

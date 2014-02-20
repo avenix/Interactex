@@ -54,13 +54,12 @@ You should have received a copy of the GNU General Public License along with thi
     return kEditableObjectTableRowHeight;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section;
-{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     THHardwareComponentEditableObject *clotheObject = (THHardwareComponentEditableObject*)self.editableObject;
     return clotheObject.pins.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     THHardwareComponentEditableObject *clotheObject = (THHardwareComponentEditableObject*)self.editableObject;
     
@@ -81,7 +80,7 @@ You should have received a copy of the GNU General Public License along with thi
     return cell;
 }
 
--(void) reloadState{
+-(void) reloadState {
     [self.tableView reloadData];
     
     CGRect tableFrame = self.tableView.frame;
@@ -94,28 +93,25 @@ You should have received a copy of the GNU General Public License along with thi
     [self.sizeDelegate properties:self didChangeSize:self.view.frame.size];
 }
 
-
--(NSString*) title{
+-(NSString*) title {
     return @"Pins";
 }
 
--(void) viewWillAppear:(BOOL)animated{
+-(void) viewWillAppear:(BOOL)animated {
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadState) name:kNotificationPinAttached object:nil];
-
 }
 
--(void) viewDidAppear:(BOOL)animated{
+-(void) viewDidAppear:(BOOL)animated {
 
     [super viewDidAppear:animated];
 }
 
--(void) viewWillDisappear:(BOOL)animated{
+-(void) viewWillDisappear:(BOOL)animated {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
 }
 

@@ -13,7 +13,7 @@ www.interactex.org
 
 Copyright (C) 2013 TU Munich, Munich, Germany; DRLab, University of the
 Arts Berlin, Berlin, Germany; Telekom Innovation Laboratories, Berlin, Germany
-	
+
 Contacts:
 
 juan.haladjian@cs.tum.edu

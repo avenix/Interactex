@@ -61,6 +61,7 @@ You should have received a copy of the GNU General Public License along with thi
 @property(nonatomic) CGPoint p2;
 @property(nonatomic) BOOL selected;
 @property(nonatomic) ccColor3B color;
+@property(nonatomic, readonly) BOOL canColorBeChanged;
 @property(nonatomic, strong) NSMutableArray * nodes;
 
 -(id)initWithObj1:(THElementPinEditable*) obj1 obj2:(THBoardPinEditable*) obj2;

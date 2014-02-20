@@ -44,8 +44,13 @@ You should have received a copy of the GNU General Public License along with thi
 #import "THComparisonCondition.h"
 #import "THComparatorEditableProperties.h"
 #import "THGrouperConditionEditable.h"
+#import "TFMethodInvokeAction.h"
 
 @implementation THComparisonConditionEditable
+
+NSString * const kConditionTypeStrings[kNumConditionTypes] = {@"<",@"=",@">"};
+
+NSString * const kConditionTypeDescriptionStrings[kNumConditionTypes] = {@"smaller than",@"equals to",@"bigger than"};
 
 @dynamic type;
 
@@ -73,8 +78,8 @@ You should have received a copy of the GNU General Public License along with thi
     self = [super initWithCoder:decoder];
     [self loadSprite];
     
-    self.obj1 = [decoder decodeObjectForKey:@"object1"];
-    self.obj2 = [decoder decodeObjectForKey:@"object2"];
+    self.action1 = [decoder decodeObjectForKey:@"action1"];
+    self.action2 = [decoder decodeObjectForKey:@"action2"];
     
     /* Juan check
     if(self.obj1 != nil){
@@ -91,16 +96,16 @@ You should have received a copy of the GNU General Public License along with thi
 {
     [super encodeWithCoder:coder];
     
-    [coder encodeObject:self.obj1 forKey:@"object1"];
-    [coder encodeObject:self.obj2 forKey:@"object2"];
+    [coder encodeObject:self.action1 forKey:@"action1"];
+    [coder encodeObject:self.action2 forKey:@"action2"];
 }
 
 -(id)copyWithZone:(NSZone *)zone
 {
     THComparisonConditionEditable * copy = [super copyWithZone:zone];
     
-    copy.obj1 = self.obj1;
-    copy.obj2 = self.obj2;
+    copy.action1 = self.action1;
+    copy.action2 = self.action2;
     
     return copy;
 }
@@ -115,7 +120,6 @@ You should have received a copy of the GNU General Public License along with thi
     [controllers addObjectsFromArray:[super propertyControllers]];
     return controllers;
 }
-
 
 #pragma mark - Protocols
 /*
@@ -147,7 +151,6 @@ You should have received a copy of the GNU General Public License along with thi
 }
 
 -(void) setType:(THConditionType)type{
-    
     THComparisonCondition * condition = (THComparisonCondition*) self.simulableObject;
     condition.type = type;
 }
@@ -158,7 +161,6 @@ You should have received a copy of the GNU General Public License along with thi
 }
 
 -(float) value1{
-    
     THComparisonCondition * condition = (THComparisonCondition*) self.simulableObject;
     return condition.value1;
 }
@@ -169,43 +171,49 @@ You should have received a copy of the GNU General Public License along with thi
 }
 
 -(float) value2{
-    
     THComparisonCondition * condition = (THComparisonCondition*) self.simulableObject;
     return condition.value2;
+}
+
+-(NSString*) propertyName1 {
+    return self.action1.firstParam.property.name;
+}
+
+-(NSString*) propertyName2 {
+    return self.action2.firstParam.property.name;
 }
 
 -(void) handleObjectRemoved:(NSNotification*) notification{
     
     TFEditableObject * object = notification.object;
     
-    if(object == self.obj1){
-        self.obj1 = nil;
-        self.propertyName1 = nil;
-    } else if(object == self.obj2){
-        self.obj2 = nil;
-        self.propertyName2 = nil;
+    if(object == self.action1.source){
+        
+        self.action1 = nil;
+        
+    } else if(object == self.action2.source){
+        
+        self.action2 = nil;
     }
     
     [_currentComparatorProperties reloadState];
     [super reloadProperties];
-    //[super handleEditableObjectRemoved:notification];
 }
 
 -(void) handleRegisteredAsTargetForAction:(TFMethodInvokeAction*) action{
     
-    if(self.obj1 == nil){
-        self.obj1 = action.source;
-        self.propertyName1 = action.firstParam.property.name;
+    if(self.action1 == nil){
         
-    } else if(self.obj2 == nil){
-        self.obj2 = action.source;
-        self.propertyName2 = action.firstParam.property.name;
+        self.action1 = action;
+        
+    } else if(self.action2 == nil){
+        
+        self.action2 = action;
         
     } else {
-        self.obj1 = action.source;
-        self.propertyName1 = action.firstParam.property.name;
-        self.obj2 = nil;
-        self.propertyName2 = nil;
+        
+        self.action1 = action;
+        self.action2 = action;
     }
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleObjectRemoved:) name:kNotificationObjectRemoved object:action.source];
@@ -220,14 +228,19 @@ You should have received a copy of the GNU General Public License along with thi
     [super addConnectionTo:object animated:animated];
 }
 */
+
+-(NSString*) conditionTypeString{
+    return kConditionTypeDescriptionStrings[self.type];
+}
+
 -(NSString*) description{
     return @"Comparison";
 }
 
 -(void) prepareToDie{
     _currentComparatorProperties = nil;
-    self.obj1 = nil;
-    self.obj2 = nil;
+    self.action1 = nil;
+    self.action2 = nil;
     [super prepareToDie];
 }
 

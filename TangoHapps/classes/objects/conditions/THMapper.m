@@ -57,7 +57,6 @@ You should have received a copy of the GNU General Public License along with thi
     TFEvent * event = [TFEvent eventNamed:kEventValueChanged];
     event.param1 = [TFPropertyInvocation invocationWithProperty:property target:self];
     self.events = [NSMutableArray arrayWithObject:event];
-    
 }
 
 -(id) init{
@@ -113,8 +112,10 @@ You should have received a copy of the GNU General Public License along with thi
 
 -(float) mapAndConstrain:(float) value{
     
-    return [THClientHelper LinearMapping:value min:self.min1 max:self.max1 retMin:self.min2 retMax:self.max2];
+    value = [THClientHelper LinearMapping:value min:self.min1 max:self.max1 retMin:self.min2 retMax:self.max2];
+    value = [THClientHelper Constrain:value min:self.min2 max:self.max2];
     
+    return value;
 }
 
 -(void) setValue:(float)value{

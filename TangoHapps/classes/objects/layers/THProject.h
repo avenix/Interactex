@@ -126,6 +126,11 @@ You should have received a copy of the GNU General Public License along with thi
 -(THHardwareComponentEditableObject*) hardwareComponentAtLocation:(CGPoint) location;
 -(void) tryAttachClotheObject: (THHardwareComponentEditableObject*) clotheObject;
 
+//other hardware components
+-(void) addOtherHardwareComponent:(THHardwareComponentEditableObject*) hardwareComponent;
+-(void) removeOtherHardwareComponent:(THHardwareComponentEditableObject*) hardwareComponent;
+-(THHardwareComponentEditableObject*) otherHardwareComponentAtLocation:(CGPoint) location;
+
 //clothes
 -(void) addClothe:(THClothe*) object;
 -(void) removeClothe:(THClothe*) object;
@@ -156,7 +161,7 @@ You should have received a copy of the GNU General Public License along with thi
 -(void) removeWire:(THWire*) wire;
 -(void) addWireFrom:(THElementPinEditable*) elementPin to:(THBoardPinEditable*) boardPin;
 -(void) removeAllWiresFrom:(id) object notify:(BOOL) notify;
-//-(void) removeAllWiresTo:(id) object notify:(BOOL) notify;
+-(void) removeAllWiresFromElementPin:(THElementPinEditable*) elementPin notify:(BOOL) notify;
 -(TFEditableObject*) wireAtLocation:(CGPoint) location;
 
 //invocation connections
@@ -175,6 +180,7 @@ You should have received a copy of the GNU General Public License along with thi
 @property (nonatomic,readonly) THiPhoneEditableObject * iPhone;
 @property (nonatomic,readonly) NSMutableArray * boards;
 @property (nonatomic,readonly) NSMutableArray * hardwareComponents;
+@property (nonatomic,readonly) NSMutableArray * otherHardwareComponents;
 @property (nonatomic,readonly) NSMutableArray * clothes;
 @property (nonatomic,readonly) NSMutableArray * iPhoneObjects;
 @property (nonatomic,readonly) NSMutableArray * conditions;

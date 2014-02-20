@@ -52,22 +52,16 @@ float const kGridItemHeight = 230;
 
 float const kLineAcceptedTiltingTime = 0.35f;
 
-
 NSString * const kNotificationActionAdded = @"notificationActionAdded";
 NSString * const kNotificationActionRemoved = @"notificationActionRemoved";
-
 NSString * const kNotificationObjectAdded = @"notificationEntityAdded";
 NSString * const kNotificationObjectRemoved = @"notificationEntityRemoved";
-
 NSString * const kNotificationObjectSelected = @"notificationObjectSelected";
 NSString * const kNotificationObjectDeselected = @"notificationObjectDeselected";
-
 NSString * const kNotificationPaletteItemSelected = @"notificationPaletteItemSelected";
 NSString * const kNotificationPaletteItemDeselected = @"notificationPaletteItemDeselected";
-
+NSString * const kNotificationInvocationCompleted = @"notificationInvocationCompleted";
 NSString * const kNotificationConnectionMade = @"notificationConnectionMade";
-
-
 NSString * const kConnectionMadeEffect = @"connectionMade.mp3";
 
 float kPaletteItemsPadding = 8;

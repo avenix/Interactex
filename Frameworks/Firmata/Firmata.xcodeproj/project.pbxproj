@@ -25,7 +25,7 @@
 
 /* Begin PBXFileReference section */
 		9A17359617B11D87001DD4A4 /* libFirmata.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFirmata.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		9A17359D17B11D87001DD4A4 /* Firmata-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Firmata-Prefix.pch"; sourceTree = "<group>"; };
+		9A39649A18AE66E10061E44B /* iFirmata-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "iFirmata-Prefix.pch"; path = "../../../iFirmata/iFirmata/iFirmata-Prefix.pch"; sourceTree = "<group>"; };
 		9AAF279E182AF38600531E3A /* IFFirmataCommunicationModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IFFirmataCommunicationModule.h; path = Firmata/IFFirmataCommunicationModule.h; sourceTree = SOURCE_ROOT; };
 		9AAF279F182AF38600531E3A /* IFFirmataCommunicationModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IFFirmataCommunicationModule.m; path = Firmata/IFFirmataCommunicationModule.m; sourceTree = SOURCE_ROOT; };
 		9AAF27A0182AF38600531E3A /* IFFirmata.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IFFirmata.h; path = Firmata/IFFirmata.h; sourceTree = SOURCE_ROOT; };
@@ -75,7 +75,7 @@
 		9A17359C17B11D87001DD4A4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				9A17359D17B11D87001DD4A4 /* Firmata-Prefix.pch */,
+				9A39649A18AE66E10061E44B /* iFirmata-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -166,6 +166,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -188,6 +189,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

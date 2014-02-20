@@ -636,7 +636,7 @@ void setup()
   iFirmata.attach(START_SYSEX, sysexCallback);
   iFirmata.attach(SYSTEM_RESET, systemResetCallback);
 
-  iFirmata.begin(19200);
+  iFirmata.begin(14400);
   
   systemResetCallback();  // reset to default config */ 
   

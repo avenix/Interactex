@@ -54,7 +54,7 @@ You should have received a copy of the GNU General Public License along with thi
 @property (nonatomic,readonly) NSMutableArray * attachedPins;
 @property (nonatomic) NSInteger number;
 @property (nonatomic) THPinType type;
-@property (nonatomic, readonly) THPinMode mode;
+@property (nonatomic) THPinMode mode;
 @property (nonatomic) NSInteger value;
 @property (nonatomic, readonly) BOOL acceptsManyPins;
 @property (nonatomic) BOOL isPWM;
@@ -65,6 +65,7 @@ You should have received a copy of the GNU General Public License along with thi
 -(id) initWithPin:(THBoardPin*) pin;
 -(void) attachPin:(THElementPinEditable*) pinEditable;
 -(void) deattachPin:(THElementPinEditable*) pinEditable;
+-(void) deattachAllPins;
 -(BOOL) isClotheObjectAttached:(THHardwareComponentEditableObject*) object;
 
 @end

@@ -42,6 +42,7 @@ You should have received a copy of the GNU General Public License along with thi
 
 #import <Foundation/Foundation.h>
 #import "THPin.h"
+#import "TFEditableObject.h"
 
 @class THElementPinEditable;
 

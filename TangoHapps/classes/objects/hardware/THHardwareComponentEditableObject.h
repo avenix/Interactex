@@ -65,6 +65,6 @@ You should have received a copy of the GNU General Public License along with thi
 -(BOOL) isInputObject;
 -(void) autoroutePlusAndMinusPins;
 -(void) autoroute;
--(void)handleBoardRemoved:(THBoardEditable *)board;
+-(void) handleBoardRemoved:(THBoardEditable *)board;
 
 @end

@@ -74,6 +74,8 @@ You should have received a copy of the GNU General Public License along with thi
     
     self = [super init];
     if(self){
+        self.additionalConnections = [NSMutableArray array];
+        
         self.shouldRecognizePanGestures = YES;
         _zoomableLayer = [CCLayer node];
         [self addChild:_zoomableLayer z:-10];
@@ -91,18 +93,13 @@ You should have received a copy of the GNU General Public License along with thi
     [c addObserver:self selector:@selector(startRemovingConnections) name:kNotificationStartRemovingConnections object:nil];
     [c addObserver:self selector:@selector(stopRemovingConnections) name:kNotificationStopRemovingConnections object:nil];
     
+    [c addObserver:self selector:@selector(handlePinDeattached:) name:kNotificationPinDeattached object:nil];
+    
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleSelectionLost) name:kNotificationPaletteItemSelected object:nil];
 }
 
 #pragma mark - Event handling
-
--(void) startRemovingConnections{
-    self.removeConnections = YES;
-}
-
--(void) stopRemovingConnections{
-    self.removeConnections = NO;
-}
 
 -(void) handleEditableObjectAdded:(NSNotification*) notification{
     TFEditableObject * object = notification.object;
@@ -120,17 +117,6 @@ You should have received a copy of the GNU General Public License along with thi
 }
 
 #pragma mark - Drawing
-
--(void) drawObjectsConnections {
-    
-    //[TFHelper drawLines:self.currentObject.connections];
-    
-    THProject * project = [THDirector sharedDirector].currentProject;
-    
-    if(self.state == kEditorStateConnect){
-        [TFHelper drawLinesForObjects:project.allObjects];
-    }
-}
 
 -(void) drawBoundingBoxes{
     THProject * project = [THDirector sharedDirector].currentProject;
@@ -159,7 +145,7 @@ You should have received a copy of the GNU General Public License along with thi
 }
 
 -(void) draw{
-    
+    [TFHelper drawLines:self.additionalConnections];
     [self drawTemporaryLine];
 }
 
@@ -217,19 +203,19 @@ You should have received a copy of the GNU General Public License along with thi
 #pragma mark - Pin highlighting
 
 -(void) highlightPin:(THPinEditable*) pin{
-    if(pin != _currentHighlightedPin){
-        if(_currentHighlightedPin != nil){
-            _currentHighlightedPin.highlighted = NO;
+    if(pin != self.currentHighlightedPin){
+        if(self.currentHighlightedPin != nil){
+            self.currentHighlightedPin.highlighted = NO;
         }
-        _currentHighlightedPin = pin;
-        _currentHighlightedPin.highlighted = YES;
+        self.currentHighlightedPin = pin;
+        self.currentHighlightedPin.highlighted = YES;
     }
 }
 
 -(void) dehighlightCurrentPin{
     
-    _currentHighlightedPin.highlighted = NO;
-    _currentHighlightedPin = nil;
+    self.currentHighlightedPin.highlighted = NO;
+    self.currentHighlightedPin = nil;
 }
 
 #pragma mark - Object Selection
@@ -273,7 +259,11 @@ You should have received a copy of the GNU General Public License along with thi
     editableObject.selected = YES;
     self.currentObject = editableObject;
     
-    [self showConnectionsForCurrentObject];
+    if(self.isLilypadMode){
+        //[self showWiresForCurrentObject];
+    } else {
+        [self showConnectionsForCurrentObject];
+    }
     
     if([editableObject isKindOfClass:[THWireNode class]]){
         
@@ -288,8 +278,21 @@ You should have received a copy of the GNU General Public License along with thi
 
 #pragma mark - Connection
 
+-(void) addConnectionLine:(TFConnectionLine*) connection{
+    [self.additionalConnections addObject:connection];
+}
+
+-(void) removeConnectionLine:(TFConnectionLine*) connection{
+    [self.additionalConnections removeObject:connection];
+}
+
+-(void) handlePinDeattached:(NSNotification*) notification{
+    THElementPinEditable * elementPin = notification.object;
+    THProject * project = (THProject*) [THDirector sharedDirector].currentProject;
+    [project removeAllWiresFromElementPin:elementPin notify:YES];
+}
+
 -(void) connectElementPin:(THElementPinEditable*) objectPin toBoardAtPosition:(CGPoint) position{
-    
     
     THProject * project = (THProject*) [THDirector sharedDirector].currentProject;
     THBoardEditable * board = [project boardAtLocation:position];
@@ -309,7 +312,6 @@ You should have received a copy of the GNU General Public License along with thi
             THBoardPin * sdaPinNonEditable = boardNonEditable.sdaPin;
             THBoardPin * sclPinNonEditable = boardNonEditable.sclPin;
             
-            //NSLog(@"supports scl %d supports sda %d",lilypadPin.supportsSCL, lilypadPin.supportsSDA);
             
             if((lilypadPin.supportsSCL && [sdaPinNonEditable isClotheObjectAttached:elementPin.hardware]) ||
                (lilypadPin.supportsSDA && [sclPinNonEditable isClotheObjectAttached:elementPin.hardware])) {
@@ -318,8 +320,6 @@ You should have received a copy of the GNU General Public License along with thi
                 [(THBoard*)board.simulableObject addI2CComponent:i2cObject];
             }
         }
-        
-        //if(lilypadPin.)
     }
 }
 
@@ -370,9 +370,11 @@ You should have received a copy of the GNU General Public License along with thi
     popup.connection.state = THInvocationConnectionLineStateComplete;
     popup.connection.action.firstParam = [TFPropertyInvocation invocationWithProperty:property target:popup.object];
     [popup.connection reloadSprite];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationInvocationCompleted object:popup.connection.action.firstParam];
 }
 
--(void) attachObject:(TFEditableObject*) object toInvocationParameter:(THInvocationConnectionLine*) connectionLine{
+-(void) showPropertySelectionPopupFor:(TFEditableObject*) object invocationParameter:(THInvocationConnectionLine*) connectionLine{
     if(object != nil){
         
         _propertySelectionPopup = [[THPropertySelectionPopup alloc] init];
@@ -382,7 +384,6 @@ You should have received a copy of the GNU General Public License along with thi
         [_propertySelectionPopup present];
     }
 }
-
 
 #pragma mark - Method Selection Popup
 
@@ -457,7 +458,7 @@ You should have received a copy of the GNU General Public License along with thi
         
     } else if([object2 isKindOfClass:[THInvocationConnectionLine class]]){
         
-        [self attachObject:object1 toInvocationParameter:(THInvocationConnectionLine*) object2];
+        [self showPropertySelectionPopupFor:object1 invocationParameter:(THInvocationConnectionLine*) object2];
         
     } else {
         [self showMethodSelectionPopupFor:object1 and:object2];
@@ -469,19 +470,28 @@ You should have received a copy of the GNU General Public License along with thi
 -(void) handleConnectionStartedAt:(CGPoint) location{
     THProject * project = [THDirector sharedDirector].currentProject;
     TFEditableObject * object = [project objectAtLocation:location];
-    if(self.isLilypadMode){
-        THHardwareComponentEditableObject * obj = (THHardwareComponentEditableObject*) object;
-        
-        if([obj isKindOfClass:[THHardwareComponentEditableObject class]]){
-            THElementPinEditable * object1 = [obj pinAtPosition:location];
+    if(object){
+        if(self.isLilypadMode){
             
-            if(object1 != nil){
-                [self startNewConnectionForObject:object1];
+            if([object isKindOfClass:[THHardwareComponentEditableObject class]]){
+                THHardwareComponentEditableObject * hardwareComponent = (THHardwareComponentEditableObject*) object;
+                THElementPinEditable * elementPin = [hardwareComponent pinAtPosition:location];
+                
+                if(elementPin){
+                    [self startNewConnectionForObject:elementPin];
+                }
+            }
+            
+        } else {
+            if(object.acceptsConnections){
+                [self startNewConnectionForObject:object];
             }
         }
-    } else {
-        if(object != nil && object.acceptsConnections){
-            [self startNewConnectionForObject:object];
+    } else if(self.isLilypadMode){
+        THWireNode * wireNode = [self wireNodeAtPosition:location];
+        
+        if(wireNode){
+            [self selectObject:wireNode];
         }
     }
 }
@@ -524,7 +534,7 @@ You should have received a copy of the GNU General Public License along with thi
     CGPoint location = [sender locationInView:sender.view];
     location = [self toLayerCoords:location];
     
-    if(_state == kEditorStateConnect){
+    if(self.state == kEditorStateConnect){
         
         if(sender.state == UIGestureRecognizerStateBegan){
             
@@ -534,6 +544,16 @@ You should have received a copy of the GNU General Public License along with thi
             
             [self moveCurrentConnection:location];
             
+        } else if(self.isLilypadMode && sender.state == UIGestureRecognizerStateChanged){
+            
+            CGPoint d = [sender translationInView:sender.view];
+            d.y = - d.y;
+            
+            if(self.currentObject){
+                
+                [self moveCurrentObject:d];
+            }
+            [sender setTranslation:ccp(0,0) inView:sender.view];
         }
         
     } else if(_state == kEditorStateDuplicate) {
@@ -585,11 +605,11 @@ You should have received a copy of the GNU General Public License along with thi
     if(!self.shouldRecognizePanGestures) return;
     
     if(sender.numberOfTouches == 1){
-        if(gestureState == kEditorGestureNone){
+        if(self.gestureState == kEditorGestureNone){
             [self handleSingleTouchMove:sender];
         }
     } else if(sender.state == UIGestureRecognizerStateEnded || sender.state == UIGestureRecognizerStateCancelled){
-        gestureState = kEditorGestureNone;
+        self.gestureState = kEditorGestureNone;
         if(self.state == kEditorStateConnect){
             if(_currentConnection != nil && _currentConnection.state == kConnectionStateDrawing){
                 CGPoint location = [sender locationInView:sender.view];
@@ -605,12 +625,21 @@ You should have received a copy of the GNU General Public License along with thi
     }
 }
 
+-(THWireNode*) wireNodeAtLocation:(CGPoint) location wire:(THWire*) wire{
+    for (THWireNode * node in wire.nodes) {
+        if([node testPoint:location]){
+            return node;
+        }
+    }
+    return nil;
+}
+
 -(void)tapped:(UITapGestureRecognizer*)sender {
     
     CGPoint location = [sender locationInView:sender.view];
     location = [self toLayerCoords:location];
     
-    if(self.removeConnections){
+    if(self.removingConnections){
         
         THProject * project = [THDirector sharedDirector].currentProject;
         
@@ -642,14 +671,21 @@ You should have received a copy of the GNU General Public License along with thi
             [self unselectAndDeleteEditableObject:object];
         
         } else {
+            
             THWire * wire = (THWire*) [project wireAtLocation:location];
-            [self removeEditableObject:wire];
-            
-            [wire.obj2 deattachPin:wire.obj1];
-            
-            if(wire){
-                [self unselectAndDeleteEditableObject:wire];
+            if(wire.nodes.count == 1){
+                [self removeEditableObject:wire];
+                [wire.obj2 deattachPin:wire.obj1];
+                
+                if(wire){
+                    [self unselectAndDeleteEditableObject:wire];
+                }
+            } else {
+                THWireNode * node = [self wireNodeAtLocation:location wire:wire];
+                [wire removeNode:node];
             }
+            
+            
         }
     } else {
         [self selectObjectAtPosition:location];
@@ -844,6 +880,12 @@ You should have received a copy of the GNU General Public License along with thi
     }
 }
 
+-(void) showWiresForCurrentObject{
+    if([self.currentObject isKindOfClass:[THHardwareComponentEditableObject class]]){
+        
+    }
+}
+
 -(void) showConnectionsForCurrentObject{
     THProject * project = [THDirector sharedDirector].currentProject;
     NSArray * connections = [project invocationConnectionsForObject:self.currentObject];
@@ -891,14 +933,20 @@ You should have received a copy of the GNU General Public License along with thi
 
 -(void) setState:(TFEditorState)state{
     if(_state != state){
+        
         if(_state == kEditorStateConnect){
-            [self hideConnectionsForAllObjectsButCurrent];
+            if(!self.isLilypadMode){
+                [self hideConnectionsForAllObjectsButCurrent];
+            }
         }
         
         _state = state;
         
         if(self.state == kEditorStateConnect){
-            [self showConnectionsForAllObjects];
+            
+            if(!self.isLilypadMode){
+                [self showConnectionsForAllObjects];
+            }
         }
     }
 }
@@ -1063,6 +1111,22 @@ You should have received a copy of the GNU General Public License along with thi
     }
 }
 
+-(void) showOtherHardware{
+    
+    THProject * project = [THDirector sharedDirector].currentProject;
+    for (THHardwareComponentEditableObject * board in project.otherHardwareComponents) {
+        board.visible = YES;
+    }
+}
+
+-(void) hideOtherHardware{
+    
+    THProject * project = [THDirector sharedDirector].currentProject;
+    for (THHardwareComponentEditableObject * board in project.otherHardwareComponents) {
+        board.visible = NO;
+    }
+}
+
 #pragma mark - Lilypad Mode
 /*
 -(void) addLilypadObjects{
@@ -1097,6 +1161,31 @@ You should have received a copy of the GNU General Public License along with thi
     [self showiPhone];
 }
 
+-(void) updateWiresVisibility{
+    if(self.isLilypadMode){
+        THProject * project = [THDirector sharedDirector].currentProject;
+        for (THBoardEditable * board in project.boards) {
+            
+            
+            for (THWire * wire in project.wires) {
+                THBoardPinEditable * boardPin = wire.obj2;
+                if([board.pins containsObject:boardPin]){
+                    if(board.showsWires){
+                        wire.visible = YES;
+                    } else {
+                        
+                        THElementPinEditable * elementPin = wire.obj1;
+                        wire.visible = elementPin.selected;
+                    }
+                }
+            }
+        }
+    } else {
+        [self hideAllLilypadWires];
+    }
+    
+}
+
 -(void) hideAllLilypadWires{
     
     THProject * project = [THDirector sharedDirector].currentProject;
@@ -1126,8 +1215,8 @@ You should have received a copy of the GNU General Public License along with thi
     
     THPaletteViewController * paletteController = [THDirector sharedDirector].projectController.tabController.paletteController;
     
-    paletteController.sections = [NSMutableArray arrayWithObjects:paletteController.clothesSectionArray, paletteController.boardsSectionArray, paletteController.hardwareSectionArray, nil];
-    paletteController.sectionNames = [NSMutableArray arrayWithObjects:paletteController.clothesSectionName, paletteController.boardsSectionName, paletteController.hardwareSectionName, nil];
+    paletteController.sections = [NSMutableArray arrayWithObjects:paletteController.clothesSectionArray, paletteController.boardsSectionArray, paletteController.hardwareSectionArray, paletteController.otherHardwareSectionArray, nil];
+    paletteController.sectionNames = [NSMutableArray arrayWithObjects:paletteController.clothesSectionName, paletteController.boardsSectionName, paletteController.hardwareSectionName, paletteController.otherHardwareSectionName, nil];
     
     [paletteController reloadPalettes];
 }
@@ -1141,7 +1230,9 @@ You should have received a copy of the GNU General Public License along with thi
     
     [self hideNonLilypadObjects];
     [self showBoards];
-    [self showAllLilypadWires];
+    [self showOtherHardware];
+    [self updateWiresVisibility];
+    //[self showAllLilypadWires];
     [self hideNonLilypadPaletteSections];
 }
 
@@ -1149,9 +1240,11 @@ You should have received a copy of the GNU General Public License along with thi
     
     _isLilypadMode = NO;
     [self hideBoards];
+    [self hideOtherHardware];
     [self showNonLilypadObjects];
     [self unselectCurrentObject];
-    [self hideAllLilypadWires];
+    [self updateWiresVisibility];
+    //[self hideAllLilypadWires];
     [self showAllPaletteSections];
 
 }

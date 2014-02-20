@@ -58,7 +58,7 @@ You should have received a copy of the GNU General Public License along with thi
 }
 
 - (THPalette*)emptyPalette {
-    CGRect containerFrame = CGRectMake(0, 0, 230, 100);
+    CGRect containerFrame = CGRectMake(0, 0, kTabWidth, 100);
     THPalette *palette = [[THPalette alloc] initWithFrame:containerFrame];
     return palette;
 }

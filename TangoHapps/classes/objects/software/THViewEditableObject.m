@@ -86,14 +86,14 @@ You should have received a copy of the GNU General Public License along with thi
 
 -(id)initWithCoder:(NSCoder *)decoder {
     self = [super initWithCoder:decoder];
-    
+    if(self){
     [self loadView];
     self.canChangeBackgroundColor = [decoder decodeBoolForKey:@"canChangeBackgroundColor"];
     //self.subviews = [decoder decodeObjectForKey:@"subviews"];
     self.canBeResized = [decoder decodeBoolForKey:@"canBeResized"];
     
     _subviews = [NSMutableArray array];
-    
+    }
     return self;
 }
 

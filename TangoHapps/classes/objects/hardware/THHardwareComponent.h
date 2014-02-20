@@ -43,7 +43,7 @@ You should have received a copy of the GNU General Public License along with thi
 #import <Foundation/Foundation.h>
 #import "THPin.h"
 #import "THBoardPin.h"
-
+#import "TFSimulableObject.h"
 @class THClothe;
 @class THI2CComponent;
 
