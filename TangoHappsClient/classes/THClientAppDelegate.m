@@ -49,6 +49,7 @@ You should have received a copy of the GNU General Public License along with thi
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    application.idleTimerDisabled = YES;
     if([TFFileUtils dataFile:kProjectProxiesFileName existsInDirectory:@""]){
         
         NSString *filePath = [TFFileUtils dataFile:kProjectProxiesFileName inDirectory:@""];

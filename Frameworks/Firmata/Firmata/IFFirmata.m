@@ -408,6 +408,13 @@ www.interactex.org
     }
     printf("\n");
     
+    UInt16 k = buffer[14];
+    k<<=8;
+    k = k | buffer[15];
+    
+    
+    printf("endnr: %i\n",k);
+    
     if(self.communicationModule.usesFillBytes){
         [self cleanAddedBytes:buffer lenght:&originalLength];
     }
