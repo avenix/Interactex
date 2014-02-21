@@ -1264,6 +1264,14 @@
 		9AFB7E6B1833DE6400694CCE /* THClientPresetsGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFB7E681833DE6400694CCE /* THClientPresetsGenerator.m */; };
 		9AFB7E6C1833DE6400694CCE /* THClientPresetsGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFB7E681833DE6400694CCE /* THClientPresetsGenerator.m */; };
 		A33442BD18B6280100AFB366 /* THFlexSensor.m in Sources */ = {isa = PBXBuildFile; fileRef = A33442BC18B6280100AFB366 /* THFlexSensor.m */; };
+		A33442C018B6355200AFB366 /* THFlexSensorEditable.m in Sources */ = {isa = PBXBuildFile; fileRef = A33442BF18B6355200AFB366 /* THFlexSensorEditable.m */; };
+		A3747F3918B6976C00BAEAB7 /* flexsensor.png in Resources */ = {isa = PBXBuildFile; fileRef = A3747F3718B6976C00BAEAB7 /* flexsensor.png */; };
+		A3747F3A18B6976C00BAEAB7 /* flexsensor@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A3747F3818B6976C00BAEAB7 /* flexsensor@2x.png */; };
+		A3747F3D18B6978000BAEAB7 /* flexsensor.png in Resources */ = {isa = PBXBuildFile; fileRef = A3747F3B18B6978000BAEAB7 /* flexsensor.png */; };
+		A3747F3E18B6978000BAEAB7 /* flexsensor@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A3747F3C18B6978000BAEAB7 /* flexsensor@2x.png */; };
+		A3747F4118B697F300BAEAB7 /* palette_flexsensor.png in Resources */ = {isa = PBXBuildFile; fileRef = A3747F3F18B697F300BAEAB7 /* palette_flexsensor.png */; };
+		A3747F4218B697F300BAEAB7 /* palette_flexsensor@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A3747F4018B697F300BAEAB7 /* palette_flexsensor@2x.png */; };
+		A382F91E18B6428F000C1108 /* THFlexSensorPaletteItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A382F91D18B6428F000C1108 /* THFlexSensorPaletteItem.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -2647,6 +2655,16 @@
 		9AFB7E681833DE6400694CCE /* THClientPresetsGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THClientPresetsGenerator.m; sourceTree = "<group>"; };
 		A33442BB18B6280100AFB366 /* THFlexSensor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THFlexSensor.h; sourceTree = "<group>"; };
 		A33442BC18B6280100AFB366 /* THFlexSensor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THFlexSensor.m; sourceTree = "<group>"; };
+		A33442BE18B6355200AFB366 /* THFlexSensorEditable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THFlexSensorEditable.h; sourceTree = "<group>"; };
+		A33442BF18B6355200AFB366 /* THFlexSensorEditable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THFlexSensorEditable.m; sourceTree = "<group>"; };
+		A3747F3718B6976C00BAEAB7 /* flexsensor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flexsensor.png; sourceTree = "<group>"; };
+		A3747F3818B6976C00BAEAB7 /* flexsensor@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flexsensor@2x.png"; sourceTree = "<group>"; };
+		A3747F3B18B6978000BAEAB7 /* flexsensor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flexsensor.png; sourceTree = "<group>"; };
+		A3747F3C18B6978000BAEAB7 /* flexsensor@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flexsensor@2x.png"; sourceTree = "<group>"; };
+		A3747F3F18B697F300BAEAB7 /* palette_flexsensor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = palette_flexsensor.png; sourceTree = "<group>"; };
+		A3747F4018B697F300BAEAB7 /* palette_flexsensor@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "palette_flexsensor@2x.png"; sourceTree = "<group>"; };
+		A382F91C18B6428F000C1108 /* THFlexSensorPaletteItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THFlexSensorPaletteItem.h; sourceTree = "<group>"; };
+		A382F91D18B6428F000C1108 /* THFlexSensorPaletteItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THFlexSensorPaletteItem.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2860,6 +2878,10 @@
 		9A4144B517DE7A060061EDF8 /* palette */ = {
 			isa = PBXGroup;
 			children = (
+				A3747F3F18B697F300BAEAB7 /* palette_flexsensor.png */,
+				A3747F4018B697F300BAEAB7 /* palette_flexsensor@2x.png */,
+				A3747F3718B6976C00BAEAB7 /* flexsensor.png */,
+				A3747F3818B6976C00BAEAB7 /* flexsensor@2x.png */,
 				9AA4D6E118AE169100A43433 /* BLE-LilyPad.png */,
 				9AA4D6E218AE169100A43433 /* BLE-LilyPad@2x.png */,
 				9AA4D6E318AE169100A43433 /* lipoBattery.png */,
@@ -3671,10 +3693,12 @@
 				9ABC27831809B01600B39D72 /* THTemperatureSensorEditable.m */,
 				9ABC27AD1809B48500B39D72 /* THAccelerometer.h */,
 				9ABC27AE1809B48500B39D72 /* THAccelerometer.m */,
-				A33442BB18B6280100AFB366 /* THFlexSensor.h */,
-				A33442BC18B6280100AFB366 /* THFlexSensor.m */,
 				9ABC27B21809B57900B39D72 /* THAccelerometerEditable.h */,
 				9ABC27B31809B57900B39D72 /* THAccelerometerEditable.m */,
+				A33442BB18B6280100AFB366 /* THFlexSensor.h */,
+				A33442BC18B6280100AFB366 /* THFlexSensor.m */,
+				A33442BE18B6355200AFB366 /* THFlexSensorEditable.h */,
+				A33442BF18B6355200AFB366 /* THFlexSensorEditable.m */,
 				9A0F68791886B9AC00B589DC /* THCompassMPU6050.h */,
 				9A0F687A1886B9AC00B589DC /* THCompassMPU6050.m */,
 				9A0F687E1886BB2A00B589DC /* THCompassMPU6050Editable.h */,
@@ -3873,6 +3897,8 @@
 				9A3165A4182796A200CB3E59 /* THMonitorPaletteItem.m */,
 				9A894297183620BD00B8CA0E /* THJennicPaletteItem.h */,
 				9A894298183620BD00B8CA0E /* THJennicPaletteItem.m */,
+				A382F91C18B6428F000C1108 /* THFlexSensorPaletteItem.h */,
+				A382F91D18B6428F000C1108 /* THFlexSensorPaletteItem.m */,
 			);
 			path = "palette items";
 			sourceTree = "<group>";
@@ -4133,6 +4159,8 @@
 		9AFB7E291833D89800694CCE /* presets */ = {
 			isa = PBXGroup;
 			children = (
+				A3747F3B18B6978000BAEAB7 /* flexsensor.png */,
+				A3747F3C18B6978000BAEAB7 /* flexsensor@2x.png */,
 				9A39649F18AE6ABA0061E44B /* pureData.png */,
 				9A3964A018AE6ABA0061E44B /* pureData@2x.png */,
 				9A84C1E21837820500848972 /* musicPlayer.png */,
@@ -4260,6 +4288,7 @@
 			knownRegions = (
 				en,
 				English,
+				Base,
 			);
 			mainGroup = 9A35117E167B7A6800C7484B;
 			productRefGroup = 9A35118A167B7A6800C7484B /* Products */;
@@ -4789,6 +4818,7 @@
 				9A5F8D8D16A2C524000DF472 /* THContactBookProperties.xib in Resources */,
 				9A87C06116A4140C0059CC2E /* THGridItem.xib in Resources */,
 				9A1384DB16D27EA300F5EEAA /* THClotheProperties.xib in Resources */,
+				A3747F3918B6976C00BAEAB7 /* flexsensor.png in Resources */,
 				9A93848E16D6900E00A41BD2 /* THTimerProperties.xib in Resources */,
 				9A9384F616D6BE8D00A41BD2 /* sewed.mp3 in Resources */,
 				9A097688171868730028A6B4 /* THVibrationBoardProperties.xib in Resources */,
@@ -4869,6 +4899,7 @@
 				9ABC27771809985900B39D72 /* palette_lilypadBig@2x.png in Resources */,
 				9A4145B717DE7A060061EDF8 /* palette_grouper.png in Resources */,
 				9AA4D6EA18AE169100A43433 /* BLE-LilyPad@2x.png in Resources */,
+				A3747F4118B697F300BAEAB7 /* palette_flexsensor.png in Resources */,
 				9A4145B917DE7A060061EDF8 /* palette_grouper@2x.png in Resources */,
 				9A4145BB17DE7A060061EDF8 /* palette_ibutton.png in Resources */,
 				9A4145BD17DE7A060061EDF8 /* palette_ibutton@2x.png in Resources */,
@@ -4892,8 +4923,10 @@
 				9AA4D6EF18AE169100A43433 /* palette_lipoBattery.png in Resources */,
 				9AA4D76218AE1DDA00A43433 /* THBLELilyPadProperties.xib in Resources */,
 				9A6B284518AA0874009AAE31 /* palette_puredata@2x.png in Resources */,
+				A3747F3A18B6976C00BAEAB7 /* flexsensor@2x.png in Resources */,
 				9A6B285418AA08A0009AAE31 /* synthesis.pd in Resources */,
 				9ABC272D1809526C00B39D72 /* lilypadSimple.png in Resources */,
+				A3747F4218B697F300BAEAB7 /* palette_flexsensor@2x.png in Resources */,
 				9ABC27A21809B46C00B39D72 /* palette_accelerometer@2x.png in Resources */,
 				9A4145DB17DE7A060061EDF8 /* palette_musicplayer.png in Resources */,
 				9A4145DD17DE7A060061EDF8 /* palette_musicplayer@2x.png in Resources */,
@@ -5300,6 +5333,7 @@
 				9AFB7E5C1833DBCC00694CCE /* button.png in Resources */,
 				9AFB7E461833D89800694CCE /* lightSensor.png in Resources */,
 				9A5110351839384200EB25FA /* musicPlay.png in Resources */,
+				A3747F3D18B6978000BAEAB7 /* flexsensor.png in Resources */,
 				9AFB7E521833D89800694CCE /* threeColorLed.png in Resources */,
 				9A51101A1837DD5800EB25FA /* projectIcon@2x.png in Resources */,
 				9AF50032167B83140020241C /* iphoneFrame.png in Resources */,
@@ -5334,6 +5368,7 @@
 				9A7E4D34183618C200657B72 /* LSMCompass.png in Resources */,
 				9A84C1E41837820500848972 /* musicPlayer.png in Resources */,
 				9A3964A218AE6ABA0061E44B /* pureData@2x.png in Resources */,
+				A3747F3E18B6978000BAEAB7 /* flexsensor@2x.png in Resources */,
 				9AF5003C167B83140020241C /* virtualmode@2x.png in Resources */,
 				9AFB7E4C1833D89800694CCE /* potentiometer@2x.png in Resources */,
 				9A5110331839384200EB25FA /* forward@2x.png in Resources */,
@@ -5404,6 +5439,7 @@
 				9AF5038C167B84B40020241C /* THSwitch.m in Sources */,
 				9AF5038D167B84B40020241C /* THSwitchEditableObject.m in Sources */,
 				9AA4D75D18AE1DA100A43433 /* THBLELilyPadProperties.m in Sources */,
+				A33442C018B6355200AFB366 /* THFlexSensorEditable.m in Sources */,
 				9AF5038E167B84B40020241C /* THClientProject.m in Sources */,
 				9AF5038F167B84B40020241C /* THEditor.m in Sources */,
 				9AF50390167B84B40020241C /* THProject.m in Sources */,
@@ -5591,6 +5627,7 @@
 				9ABC275D18098F2400B39D72 /* THLilyPad.m in Sources */,
 				9AFB7E261833D60300694CCE /* THI2CRegister.m in Sources */,
 				9AFB7E231833D60300694CCE /* THI2CComponent.m in Sources */,
+				A382F91E18B6428F000C1108 /* THFlexSensorPaletteItem.m in Sources */,
 				9A59324A17E5D58300B20D99 /* THPaletteItem.m in Sources */,
 				9A59324C17E5D58300B20D99 /* THPaletteViewController.m in Sources */,
 				9A59324E17E5D58300B20D99 /* THPropertiesViewController.m in Sources */,
@@ -6097,6 +6134,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = TangoHappsIcons;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = TangoHappsLaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Juan Haladjian (SUQV2CYVSH)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/michaelconrads/Desktop/42/__opentabs-rhmi/OpenTabs/OpenTabs/Frameworks",
+					/Users/michaelconrads/Desktop/42/Frameworks/AudiAppFramework/AAFLogger,
+					/Users/michaelconrads/Desktop/42/Frameworks/AudiAppFramework/AAFNetworkInformation,
+					/Users/michaelconrads/Desktop/42/Frameworks/AudiAppFramework/AAFRHMI,
+					/Users/michaelconrads/Desktop/42/Frameworks/AudiAppFramework/AAFUtility,
+					/Users/michaelconrads/Desktop/42/Frameworks/ThirdParty,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TangoHapps/TangoHapps-Prefix.pch";
 				INFOPLIST_FILE = "TangoHapps/TangoHapps-Info.plist";
@@ -6115,6 +6161,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = TangoHappsIcons;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = TangoHappsLaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/michaelconrads/Desktop/42/__opentabs-rhmi/OpenTabs/OpenTabs/Frameworks",
+					/Users/michaelconrads/Desktop/42/Frameworks/AudiAppFramework/AAFLogger,
+					/Users/michaelconrads/Desktop/42/Frameworks/AudiAppFramework/AAFNetworkInformation,
+					/Users/michaelconrads/Desktop/42/Frameworks/AudiAppFramework/AAFRHMI,
+					/Users/michaelconrads/Desktop/42/Frameworks/AudiAppFramework/AAFUtility,
+					/Users/michaelconrads/Desktop/42/Frameworks/ThirdParty,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TangoHapps/TangoHapps-Prefix.pch";
 				INFOPLIST_FILE = "TangoHapps/TangoHapps-Info.plist";
@@ -6160,6 +6215,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = TangoHappsIcons;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = TangoHappsLaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/michaelconrads/Desktop/42/__opentabs-rhmi/OpenTabs/OpenTabs/Frameworks",
+					/Users/michaelconrads/Desktop/42/Frameworks/AudiAppFramework/AAFLogger,
+					/Users/michaelconrads/Desktop/42/Frameworks/AudiAppFramework/AAFNetworkInformation,
+					/Users/michaelconrads/Desktop/42/Frameworks/AudiAppFramework/AAFRHMI,
+					/Users/michaelconrads/Desktop/42/Frameworks/AudiAppFramework/AAFUtility,
+					/Users/michaelconrads/Desktop/42/Frameworks/ThirdParty,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TangoHapps/TangoHapps-Prefix.pch";
 				INFOPLIST_FILE = "TangoHapps/TangoHapps-Info.plist";
@@ -6181,7 +6245,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = ClientLaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "TangoHappsClient/TangoHappsClient-Prefix.pch";
 				INFOPLIST_FILE = "TangoHappsClient/TangoHappsClient-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
@@ -6225,7 +6289,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = ClientLaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "TangoHappsClient/TangoHappsClient-Prefix.pch";
 				INFOPLIST_FILE = "TangoHappsClient/TangoHappsClient-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
@@ -6250,7 +6314,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = ClientLaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "TangoHappsClient/TangoHappsClient-Prefix.pch";
 				INFOPLIST_FILE = "TangoHappsClient/TangoHappsClient-Info.plist";
 				LIBRARY_SEARCH_PATHS = (

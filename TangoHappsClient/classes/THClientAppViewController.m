@@ -63,7 +63,7 @@ You should have received a copy of the GNU General Public License along with thi
 #import "THI2CMessage.h"
 
 float const kScanningTimeout = 3.0f;
-float const kConnectingTimeout = 7.0f;
+float const kConnectingTimeout = 100.0f;
 
 @implementation THClientAppViewController
 /*

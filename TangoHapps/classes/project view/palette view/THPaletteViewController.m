@@ -89,6 +89,7 @@ You should have received a copy of the GNU General Public License along with thi
 #import "THBoolValuePaletteItem.h"
 #import "THStringValuePaletteItem.h"
 #import "THPureDataPaletteItem.h"
+#import "THFlexSensorPaletteItem.h"
 
 @implementation THPaletteViewController
 
@@ -431,6 +432,7 @@ You should have received a copy of the GNU General Public License along with thi
                                  [[THVibrationBoardPaletteItem alloc] initWithName:@"vibeBoard"],
                                  [[THTemperatureSensorPaletteItem alloc] initWithName:@"temperatureSensor"],
                                  [[THAccelerometerPaletteItem alloc] initWithName:@"accelerometer"],
+                                 [[THFlexSensorPaletteItem alloc] initWithName:@"flexsensor"],
                                  nil];
     
     
@@ -444,7 +446,6 @@ You should have received a copy of the GNU General Public License along with thi
                                      [[THBoolValuePaletteItem alloc] initWithName:@"boolean"],
                                      [[THStringValuePaletteItem alloc] initWithName:@"string"],
                                      [[THPureDataPaletteItem alloc] initWithName:@"puredata"],
-                                     
                                      nil];
     
     self.otherHardwareSectionArray  = [NSMutableArray arrayWithObjects:
