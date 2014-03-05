@@ -1272,6 +1272,20 @@
 		A3747F4118B697F300BAEAB7 /* palette_flexsensor.png in Resources */ = {isa = PBXBuildFile; fileRef = A3747F3F18B697F300BAEAB7 /* palette_flexsensor.png */; };
 		A3747F4218B697F300BAEAB7 /* palette_flexsensor@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A3747F4018B697F300BAEAB7 /* palette_flexsensor@2x.png */; };
 		A382F91E18B6428F000C1108 /* THFlexSensorPaletteItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A382F91D18B6428F000C1108 /* THFlexSensorPaletteItem.m */; };
+		A3CBF54018BFFA1C00537127 /* THSignalSource.m in Sources */ = {isa = PBXBuildFile; fileRef = A3CBF53F18BFFA1C00537127 /* THSignalSource.m */; };
+		A3CBF54318BFFE3400537127 /* THSignalSourceEditable.m in Sources */ = {isa = PBXBuildFile; fileRef = A3CBF54218BFFE3400537127 /* THSignalSourceEditable.m */; };
+		A3CBF54618C000ED00537127 /* THSignalSourcePaletteItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A3CBF54518C000ED00537127 /* THSignalSourcePaletteItem.m */; };
+		A3CBF55318C003D100537127 /* palette_signalsource.png in Resources */ = {isa = PBXBuildFile; fileRef = A3CBF54F18C003D100537127 /* palette_signalsource.png */; };
+		A3CBF55418C003D100537127 /* palette_signalsource@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A3CBF55018C003D100537127 /* palette_signalsource@2x.png */; };
+		A3CBF55518C003D100537127 /* signalsource.png in Resources */ = {isa = PBXBuildFile; fileRef = A3CBF55118C003D100537127 /* signalsource.png */; };
+		A3CBF55618C003D100537127 /* signalsource@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A3CBF55218C003D100537127 /* signalsource@2x.png */; };
+		A3CBF55918C007C500537127 /* palette_signalsource.png in Resources */ = {isa = PBXBuildFile; fileRef = A3CBF55718C007C500537127 /* palette_signalsource.png */; };
+		A3CBF55A18C007C500537127 /* palette_signalsource@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A3CBF55818C007C500537127 /* palette_signalsource@2x.png */; };
+		A3CBF55D18C07F5200537127 /* singletick.txt in Resources */ = {isa = PBXBuildFile; fileRef = A3CBF55C18C07F5200537127 /* singletick.txt */; };
+		A3CBF56C18C0BAA100537127 /* THSignalSourceProperties.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3CBF56B18C0BAA100537127 /* THSignalSourceProperties.xib */; };
+		A3CBF5A718C0BBF600537127 /* THSignalSourceProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = A3CBF5A618C0BBF600537127 /* THSignalSourceProperties.m */; };
+		A3CBF5A918C0C1BB00537127 /* doubletick.txt in Resources */ = {isa = PBXBuildFile; fileRef = A3CBF5A818C0C1BB00537127 /* doubletick.txt */; };
+		A3CBF5AB18C0C57300537127 /* testinput.txt in Resources */ = {isa = PBXBuildFile; fileRef = A3CBF5AA18C0C57300537127 /* testinput.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -2665,6 +2679,24 @@
 		A3747F4018B697F300BAEAB7 /* palette_flexsensor@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "palette_flexsensor@2x.png"; sourceTree = "<group>"; };
 		A382F91C18B6428F000C1108 /* THFlexSensorPaletteItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THFlexSensorPaletteItem.h; sourceTree = "<group>"; };
 		A382F91D18B6428F000C1108 /* THFlexSensorPaletteItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THFlexSensorPaletteItem.m; sourceTree = "<group>"; };
+		A3CBF53E18BFFA1C00537127 /* THSignalSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THSignalSource.h; sourceTree = "<group>"; };
+		A3CBF53F18BFFA1C00537127 /* THSignalSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THSignalSource.m; sourceTree = "<group>"; };
+		A3CBF54118BFFE3400537127 /* THSignalSourceEditable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THSignalSourceEditable.h; sourceTree = "<group>"; };
+		A3CBF54218BFFE3400537127 /* THSignalSourceEditable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THSignalSourceEditable.m; sourceTree = "<group>"; };
+		A3CBF54418C000ED00537127 /* THSignalSourcePaletteItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THSignalSourcePaletteItem.h; sourceTree = "<group>"; };
+		A3CBF54518C000ED00537127 /* THSignalSourcePaletteItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THSignalSourcePaletteItem.m; sourceTree = "<group>"; };
+		A3CBF54F18C003D100537127 /* palette_signalsource.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = palette_signalsource.png; sourceTree = "<group>"; };
+		A3CBF55018C003D100537127 /* palette_signalsource@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "palette_signalsource@2x.png"; sourceTree = "<group>"; };
+		A3CBF55118C003D100537127 /* signalsource.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = signalsource.png; sourceTree = "<group>"; };
+		A3CBF55218C003D100537127 /* signalsource@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "signalsource@2x.png"; sourceTree = "<group>"; };
+		A3CBF55718C007C500537127 /* palette_signalsource.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = palette_signalsource.png; sourceTree = "<group>"; };
+		A3CBF55818C007C500537127 /* palette_signalsource@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "palette_signalsource@2x.png"; sourceTree = "<group>"; };
+		A3CBF55C18C07F5200537127 /* singletick.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = singletick.txt; sourceTree = "<group>"; };
+		A3CBF56B18C0BAA100537127 /* THSignalSourceProperties.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = THSignalSourceProperties.xib; sourceTree = "<group>"; };
+		A3CBF5A518C0BBF600537127 /* THSignalSourceProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THSignalSourceProperties.h; sourceTree = "<group>"; };
+		A3CBF5A618C0BBF600537127 /* THSignalSourceProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THSignalSourceProperties.m; sourceTree = "<group>"; };
+		A3CBF5A818C0C1BB00537127 /* doubletick.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = doubletick.txt; sourceTree = "<group>"; };
+		A3CBF5AA18C0C57300537127 /* testinput.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = testinput.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2878,6 +2910,10 @@
 		9A4144B517DE7A060061EDF8 /* palette */ = {
 			isa = PBXGroup;
 			children = (
+				A3CBF54F18C003D100537127 /* palette_signalsource.png */,
+				A3CBF55018C003D100537127 /* palette_signalsource@2x.png */,
+				A3CBF55118C003D100537127 /* signalsource.png */,
+				A3CBF55218C003D100537127 /* signalsource@2x.png */,
 				A3747F3F18B697F300BAEAB7 /* palette_flexsensor.png */,
 				A3747F4018B697F300BAEAB7 /* palette_flexsensor@2x.png */,
 				A3747F3718B6976C00BAEAB7 /* flexsensor.png */,
@@ -3433,6 +3469,7 @@
 				9AFB7E1A1833BBDD00694CCE /* THMonitorProperties.xib */,
 				9A7B65171834D830009D0103 /* THCompassProperties.xib */,
 				9A8942A21836215300B8CA0E /* THJennicProperties.xib */,
+				A3CBF56B18C0BAA100537127 /* THSignalSourceProperties.xib */,
 			);
 			path = properties;
 			sourceTree = "<group>";
@@ -3626,6 +3663,10 @@
 				9A56CDAB17D8EDA2001021B2 /* THStringValue.m */,
 				9A56CDAF17D8EE0E001021B2 /* THStringValueEditable.h */,
 				9A56CDB017D8EE0F001021B2 /* THStringValueEditable.m */,
+				A3CBF53E18BFFA1C00537127 /* THSignalSource.h */,
+				A3CBF53F18BFFA1C00537127 /* THSignalSource.m */,
+				A3CBF54118BFFE3400537127 /* THSignalSourceEditable.h */,
+				A3CBF54218BFFE3400537127 /* THSignalSourceEditable.m */,
 				9A6B27F418AA075F009AAE31 /* THPureData.h */,
 				9A6B27F518AA075F009AAE31 /* THPureData.m */,
 				9A6B27F618AA075F009AAE31 /* THPureDataEditable.h */,
@@ -3899,6 +3940,8 @@
 				9A894298183620BD00B8CA0E /* THJennicPaletteItem.m */,
 				A382F91C18B6428F000C1108 /* THFlexSensorPaletteItem.h */,
 				A382F91D18B6428F000C1108 /* THFlexSensorPaletteItem.m */,
+				A3CBF54418C000ED00537127 /* THSignalSourcePaletteItem.h */,
+				A3CBF54518C000ED00537127 /* THSignalSourcePaletteItem.m */,
 			);
 			path = "palette items";
 			sourceTree = "<group>";
@@ -3986,6 +4029,8 @@
 				9A89429C1836213100B8CA0E /* THJennicProperties.m */,
 				9A1C3AFD1886E4D8007C5E94 /* THAutorouteProperties.h */,
 				9A1C3AFE1886E4D8007C5E94 /* THAutorouteProperties.m */,
+				A3CBF5A518C0BBF600537127 /* THSignalSourceProperties.h */,
+				A3CBF5A618C0BBF600537127 /* THSignalSourceProperties.m */,
 			);
 			path = "palette properties";
 			sourceTree = "<group>";
@@ -4028,6 +4073,7 @@
 		9AF502E3167B84B40020241C /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				A3CBF55B18C07F4900537127 /* flex */,
 				9A6B284B18AA08A0009AAE31 /* pd */,
 				9AF502E4167B84B40020241C /* gui */,
 				9AF502F7167B84B40020241C /* images */,
@@ -4159,6 +4205,8 @@
 		9AFB7E291833D89800694CCE /* presets */ = {
 			isa = PBXGroup;
 			children = (
+				A3CBF55718C007C500537127 /* palette_signalsource.png */,
+				A3CBF55818C007C500537127 /* palette_signalsource@2x.png */,
 				A3747F3B18B6978000BAEAB7 /* flexsensor.png */,
 				A3747F3C18B6978000BAEAB7 /* flexsensor@2x.png */,
 				9A39649F18AE6ABA0061E44B /* pureData.png */,
@@ -4198,6 +4246,16 @@
 				9AFB7E681833DE6400694CCE /* THClientPresetsGenerator.m */,
 			);
 			path = util;
+			sourceTree = "<group>";
+		};
+		A3CBF55B18C07F4900537127 /* flex */ = {
+			isa = PBXGroup;
+			children = (
+				A3CBF5AA18C0C57300537127 /* testinput.txt */,
+				A3CBF5A818C0C1BB00537127 /* doubletick.txt */,
+				A3CBF55C18C07F5200537127 /* singletick.txt */,
+			);
+			name = flex;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -4771,8 +4829,10 @@
 				9AF50441167B84B40020241C /* song2.mp3 in Resources */,
 				9ABC27941809B2A500B39D72 /* temperatureSensor@2x.png in Resources */,
 				9AF50442167B84B40020241C /* song3.mp3 in Resources */,
+				A3CBF55318C003D100537127 /* palette_signalsource.png in Resources */,
 				9A8BB90E167C7D6400FBABFB /* buzzerPlay.png in Resources */,
 				9A8BB910167C7D6400FBABFB /* buzzerStop.png in Resources */,
+				A3CBF5A918C0C1BB00537127 /* doubletick.txt in Resources */,
 				9A8BB911167C7D6400FBABFB /* buzzerStop@2x.png in Resources */,
 				9A8BB913167C7D8A00FBABFB /* buzzerPlay@2x.png in Resources */,
 				9A8BBA45167F2FAD00FBABFB /* compassHit.mp3 in Resources */,
@@ -4839,6 +4899,7 @@
 				9A41454717DE7A060061EDF8 /* musicPlay.png in Resources */,
 				9A41454917DE7A060061EDF8 /* musicPlay@2x.png in Resources */,
 				9A41454B17DE7A060061EDF8 /* pause.png in Resources */,
+				A3CBF56C18C0BAA100537127 /* THSignalSourceProperties.xib in Resources */,
 				9A41454D17DE7A060061EDF8 /* pause@2x.png in Resources */,
 				9A41454F17DE7A060061EDF8 /* accelerometerArrow.png in Resources */,
 				9A41455117DE7A060061EDF8 /* accelerometerArrow@2x.png in Resources */,
@@ -4847,6 +4908,7 @@
 				9A41455717DE7A060061EDF8 /* button@2x.png in Resources */,
 				9A41455917DE7A060061EDF8 /* buzzer.png in Resources */,
 				9A41455B17DE7A060061EDF8 /* buzzer@2x.png in Resources */,
+				A3CBF5AB18C0C57300537127 /* testinput.txt in Resources */,
 				9A41455D17DE7A060061EDF8 /* call.png in Resources */,
 				9A41455F17DE7A060061EDF8 /* call@2x.png in Resources */,
 				9AA4D75818AE1C8500A43433 /* THLilypadProperties.xib in Resources */,
@@ -4931,6 +4993,7 @@
 				9A4145DB17DE7A060061EDF8 /* palette_musicplayer.png in Resources */,
 				9A4145DD17DE7A060061EDF8 /* palette_musicplayer@2x.png in Resources */,
 				9A4145DF17DE7A060061EDF8 /* palette_potentiometer.png in Resources */,
+				A3CBF55418C003D100537127 /* palette_signalsource@2x.png in Resources */,
 				9AB490391886E54500BCB1C6 /* THAutorouteProperties.xib in Resources */,
 				9A4145E117DE7A060061EDF8 /* palette_potentiometer@2x.png in Resources */,
 				9A4145E317DE7A060061EDF8 /* palette_slider.png in Resources */,
@@ -4940,6 +5003,7 @@
 				9A4145EB17DE7A060061EDF8 /* palette_string.png in Resources */,
 				9A4145ED17DE7A060061EDF8 /* palette_string@2x.png in Resources */,
 				9A4145EF17DE7A060061EDF8 /* palette_switch.png in Resources */,
+				A3CBF55518C003D100537127 /* signalsource.png in Resources */,
 				9A4145F117DE7A060061EDF8 /* palette_switch@2x.png in Resources */,
 				9A4145F317DE7A060061EDF8 /* palette_threeColorLed.png in Resources */,
 				9A4145F517DE7A060061EDF8 /* palette_threeColorLed@2x.png in Resources */,
@@ -4983,6 +5047,7 @@
 				9A41462F17DE7A060061EDF8 /* vibeBoard.png in Resources */,
 				9A41463117DE7A060061EDF8 /* vibeBoard@2x.png in Resources */,
 				9A41463317DE7A060061EDF8 /* yellowLight.png in Resources */,
+				A3CBF55618C003D100537127 /* signalsource@2x.png in Resources */,
 				9A41463517DE7A060061EDF8 /* yellowLight@2x.png in Resources */,
 				9A41463717DE7A060061EDF8 /* connect.png in Resources */,
 				9A41463917DE7A060061EDF8 /* connect@2x.png in Resources */,
@@ -5006,6 +5071,7 @@
 				9A41465517DE7A060061EDF8 /* push@2x.png in Resources */,
 				9A41465A17DE86E60061EDF8 /* palettePull.png in Resources */,
 				9A41469517DE93F30061EDF8 /* palettePull@2x.png in Resources */,
+				A3CBF55D18C07F5200537127 /* singletick.txt in Resources */,
 				9A1C3AC41886DDAE007C5E94 /* palette_LSMCompass@2x.png in Resources */,
 				9A5931CA17E5CD4500B20D99 /* paletteIcon.png in Resources */,
 				9A5931CC17E5CD4500B20D99 /* paletteIcon@2x.png in Resources */,
@@ -5338,6 +5404,7 @@
 				9A51101A1837DD5800EB25FA /* projectIcon@2x.png in Resources */,
 				9AF50032167B83140020241C /* iphoneFrame.png in Resources */,
 				9AF50033167B83140020241C /* iphoneFrame@2x.png in Resources */,
+				A3CBF55A18C007C500537127 /* palette_signalsource@2x.png in Resources */,
 				9A5110181837DD5800EB25FA /* projectIcon.png in Resources */,
 				9AFB7E481833D89800694CCE /* lightSensor@2x.png in Resources */,
 				9AF50034167B83140020241C /* MainStoryboard.storyboard in Resources */,
@@ -5345,6 +5412,7 @@
 				9AFB7E421833D89800694CCE /* led.png in Resources */,
 				9A5D046E18844ADC006E9348 /* peer_disconnected.mp3 in Resources */,
 				9A51102D1839384200EB25FA /* backwards.png in Resources */,
+				A3CBF55918C007C500537127 /* palette_signalsource.png in Resources */,
 				9A5110371839384200EB25FA /* musicPlay@2x.png in Resources */,
 				9AF50036167B83140020241C /* removeButton.png in Resources */,
 				9A84C1E61837820500848972 /* musicPlayer@2x.png in Resources */,
@@ -5410,6 +5478,7 @@
 				9AF5036E167B84B40020241C /* THHardwareProblem.m in Sources */,
 				9AF50370167B84B40020241C /* THBoardPin.m in Sources */,
 				9AF50371167B84B40020241C /* THBoardPinEditable.m in Sources */,
+				A3CBF54618C000ED00537127 /* THSignalSourcePaletteItem.m in Sources */,
 				9AF50372167B84B40020241C /* THElementPin.m in Sources */,
 				9AF50373167B84B40020241C /* THElementPinEditable.m in Sources */,
 				9AF50374167B84B40020241C /* THPin.m in Sources */,
@@ -5435,6 +5504,7 @@
 				9AF50389167B84B40020241C /* THPotentiometerEditableObject.m in Sources */,
 				9AA4D72E18AE16E600A43433 /* THBLELilyPadEditable.m in Sources */,
 				9AF5038A167B84B40020241C /* THSlideSwitch.m in Sources */,
+				A3CBF54318BFFE3400537127 /* THSignalSourceEditable.m in Sources */,
 				9AF5038B167B84B40020241C /* THSlideSwitchEditableObject.m in Sources */,
 				9AF5038C167B84B40020241C /* THSwitch.m in Sources */,
 				9AF5038D167B84B40020241C /* THSwitchEditableObject.m in Sources */,
@@ -5573,6 +5643,7 @@
 				9A5D047118844B50006E9348 /* THSoundEffect.m in Sources */,
 				9A85721C172804B600510D23 /* THSoundPicker.m in Sources */,
 				9A8572B7172AD64C00510D23 /* THAsset.m in Sources */,
+				A3CBF5A718C0BBF600537127 /* THSignalSourceProperties.m in Sources */,
 				9A8572BC172AD6D900510D23 /* THSoundAsset.m in Sources */,
 				9A8572C1172AD7F500510D23 /* THAssetCollection.m in Sources */,
 				9A8426A617564A80009495AB /* TFConnectionLine.m in Sources */,
@@ -5605,6 +5676,7 @@
 				9A56CDB717D8EF31001021B2 /* THStringValueProperties.m in Sources */,
 				9A56CDC617D8F357001021B2 /* THStringValuePaletteItem.m in Sources */,
 				9A56D05317D9C4DB001021B2 /* THCollectionProjectCell.m in Sources */,
+				A3CBF54018BFFA1C00537127 /* THSignalSource.m in Sources */,
 				9A56D05B17D9CD39001021B2 /* THProjectDraggableCell.m in Sources */,
 				9AA4D74818AE17A400A43433 /* THSimpleLilypadProperties.m in Sources */,
 				9A56D19617DBDAA9001021B2 /* THDirector.m in Sources */,

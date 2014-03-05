@@ -12,6 +12,4 @@
 
 @property (nonatomic, assign, readonly) NSInteger flexValue;
 
-//@property (nonatomic, readonly) THElementPinEditable * pin5Pin;
-//@property (nonatomic, readonly) THElementPinEditable * pin4Pin;
 @end

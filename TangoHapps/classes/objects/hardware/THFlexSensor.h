@@ -9,5 +9,5 @@
 #import "THHardwareComponent.h"
 
 @interface THFlexSensor : THHardwareComponent
-@property (nonatomic, assign, readwrite) NSUInteger flexlevel;
+@property (nonatomic, assign, readonly) NSUInteger flexValue;
 @end

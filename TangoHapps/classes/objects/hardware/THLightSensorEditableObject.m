@@ -107,10 +107,12 @@ You should have received a copy of the GNU General Public License along with thi
 #pragma mark - Methods
 
 -(void) handleTouchBegan{
+        NSLog(@"%s",__PRETTY_FUNCTION__);
     self.isDown = YES;
 }
 
 -(void) handleTouchEnded{
+            NSLog(@"%s",__PRETTY_FUNCTION__);
     self.isDown = NO;
 }
 

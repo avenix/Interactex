@@ -8,6 +8,16 @@
 
 #import "THFlexSensorEditable.h"
 #import "THFlexSensor.h"
+
+@interface THFlexSensor ()
+@property (nonatomic, assign, readwrite) NSUInteger flexValue;
+@end
+
+@interface THFlexSensorEditable ()
+@property (nonatomic, assign, readwrite) NSInteger flexValue;
+@property (nonatomic, assign, readwrite) BOOL pressed;
+@end
+
 @implementation THFlexSensorEditable
 
 - (void)loadFlexsensor
@@ -16,7 +26,6 @@
     [self addChild:self.sprite];
     
     self.acceptsConnections = YES;
-    self.isAccelerometerEnabled = YES;
 }
 
 -(id) init{
@@ -31,6 +40,76 @@
     }
     return self;
 }
+
+#pragma mark - Property Controller
+
+- (NSArray *)propertyControllers
+{
+    NSArray *controllers = [super propertyControllers];
+    //add property-controllers here
+    return controllers;
+}
+
+
+#pragma mark -
+
+- (void)update
+{
+    if(self.pressed)
+    {
+        self.flexValue -= 1;
+    }
+    else
+    {
+        self.flexValue += 1;
+    }
+    
+    THFlexSensor *realSensor = (THFlexSensor *)self.simulableObject;
+    self.flexValue = [THClientHelper Constrain:self.flexValue min:130 max:270];
+    realSensor.flexValue = self.flexValue;
+}
+
+- (void)updateToPinValue
+{
+    NSLog(@"%s",__PRETTY_FUNCTION__);
+}
+
+
+-  (void)willStartSimulation
+{
+    [super willStartSimulation];
+
+    NSLog(@"%s",__PRETTY_FUNCTION__);
+}
+
+- (void)willStartEdition
+{
+    NSLog(@"%s",__PRETTY_FUNCTION__);
+}
+
+
+- (NSString*)description
+{
+    return @"Flex Sensor";
+}
+
+#pragma mark - touch events
+
+- (void)handleTouchBegan
+{
+    NSLog(@"%s",__PRETTY_FUNCTION__);
+    self.pressed = YES;
+}
+
+
+- (void)handleTouchEnded
+{
+    NSLog(@"%s",__PRETTY_FUNCTION__);
+    self.pressed = NO;
+}
+
+
+
 
 #pragma mark - Archiving
 
@@ -52,106 +131,6 @@
     THFlexSensorEditable * copy = [super copyWithZone:zone];
     
     return copy;
-}
-
-#pragma mark - Property Controller
-
-#pragma mark - Methods
-/*
- -(void) handleAccelerated:(UIAcceleration*) acceleration{
- 
- //NSLog(@"accel: %f %f",acceleration.y,-acceleration.x);
- 
- self.accelerometerX = acceleration.y * 300;
- self.accelerometerY = -acceleration.x * 300;
- //NSLog(@"accel: %d %d",self.x,self.y);
- }*/
-
-
-//
-//-(THElementPinEditable*) pin5Pin{
-//    return [self.pins objectAtIndex:0];
-//}
-//
-//-(THElementPinEditable*) pin4Pin{
-//    return [self.pins objectAtIndex:1];
-//}
-
-/*
- -(void) updatePinValue{
- THElementPinEditable * analogPin = self.pin5Pin;
- THBoardPinEditable * boardPin = analogPin.attachedToPin;
- THCompass * compass = (THCompass*) self.object;
- boardPin.currentValue = compass.light;
- }*/
-
-- (void)update
-{
-    NSLog(@"%s",__PRETTY_FUNCTION__);
-
-}
-
-- (void)handleDoubleTapped
-{
-     NSLog(@"%s",__PRETTY_FUNCTION__);
-}
-
-- (void)updateToPinValue
-{
-    NSLog(@"%s",__PRETTY_FUNCTION__);
-}
-
-/*
--(NSInteger) accelerometerX{
-    THAccelerometer * accelerometer = (THAccelerometer*) self.simulableObject;
-    return accelerometer.accelerometerX;
-}
-
--(void) setAccelerometerX:(NSInteger)accelerometerX{
-    
-    THAccelerometer * accelerometer = (THAccelerometer*) self.simulableObject;
-    accelerometer.accelerometerX = accelerometerX;
-}
-
--(NSInteger) accelerometerY{
-    THAccelerometer * accelerometer = (THAccelerometer*) self.simulableObject;
-    return accelerometer.accelerometerY;
-}
-
--(void) setAccelerometerY:(NSInteger)accelerometerY{
-    
-    THAccelerometer * accelerometer = (THAccelerometer*) self.simulableObject;
-    accelerometer.accelerometerY = accelerometerY;
-}
-
--(NSInteger) accelerometerZ{
-    THAccelerometer * accelerometer = (THAccelerometer*) self.simulableObject;
-    return accelerometer.accelerometerZ;
-}
-
--(void) setAccelerometerZ:(NSInteger)accelerometerZ{
-    
-    THAccelerometer * accelerometer = (THAccelerometer*) self.simulableObject;
-    accelerometer.accelerometerZ = accelerometerZ;
-}
-*/
-
-
-- (void)willStartSimulation
-{
-    [super willStartSimulation];
-
-    NSLog(@"%s",__PRETTY_FUNCTION__);
-}
-
--(void) willStartEdition
-{
-    NSLog(@"%s",__PRETTY_FUNCTION__);
-}
-
--(NSString*) description
-{
-    return @"Flex Sensor";
 }
 
 

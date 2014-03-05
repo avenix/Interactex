@@ -90,6 +90,7 @@ You should have received a copy of the GNU General Public License along with thi
 #import "THStringValuePaletteItem.h"
 #import "THPureDataPaletteItem.h"
 #import "THFlexSensorPaletteItem.h"
+#import "THSignalSourcePaletteItem.h"
 
 @implementation THPaletteViewController
 
@@ -446,6 +447,7 @@ You should have received a copy of the GNU General Public License along with thi
                                      [[THBoolValuePaletteItem alloc] initWithName:@"boolean"],
                                      [[THStringValuePaletteItem alloc] initWithName:@"string"],
                                      [[THPureDataPaletteItem alloc] initWithName:@"puredata"],
+                                     [[THSignalSourcePaletteItem alloc] initWithName:@"signalsource"],
                                      nil];
     
     self.otherHardwareSectionArray  = [NSMutableArray arrayWithObjects:
