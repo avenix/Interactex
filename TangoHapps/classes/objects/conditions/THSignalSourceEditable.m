@@ -21,7 +21,8 @@
     self.acceptsConnections = YES;
 }
 
--(id) init{
+- (id)init
+{
     self = [super init];
     if(self){
         self.simulableObject = [[THSignalSource alloc] init];
@@ -70,13 +71,14 @@
     NSArray *controllers = [super propertyControllers];
     THSignalSourceProperties *properties = [THSignalSourceProperties properties];
     //add property-controllers here
+    
     return [controllers arrayByAddingObject:properties];
 }
 
 
 #pragma mark - Archiving
 
--(id)initWithCoder:(NSCoder *)decoder {
+- (id)initWithCoder:(NSCoder *)decoder {
     self = [super initWithCoder:decoder];
     if(self){
         [self load];
@@ -84,13 +86,13 @@
     return self;
 }
 
--(void)encodeWithCoder:(NSCoder *)coder {
+- (void)encodeWithCoder:(NSCoder *)coder
+{
     [super encodeWithCoder:coder];
 }
 
--(id)copyWithZone:(NSZone *)zone {
+- (id)copyWithZone:(NSZone *)zone {
     THSignalSourceEditable * copy = [super copyWithZone:zone];
-    
     return copy;
 }
 

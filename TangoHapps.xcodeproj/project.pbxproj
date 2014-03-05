@@ -1272,6 +1272,9 @@
 		A3747F4118B697F300BAEAB7 /* palette_flexsensor.png in Resources */ = {isa = PBXBuildFile; fileRef = A3747F3F18B697F300BAEAB7 /* palette_flexsensor.png */; };
 		A3747F4218B697F300BAEAB7 /* palette_flexsensor@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A3747F4018B697F300BAEAB7 /* palette_flexsensor@2x.png */; };
 		A382F91E18B6428F000C1108 /* THFlexSensorPaletteItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A382F91D18B6428F000C1108 /* THFlexSensorPaletteItem.m */; };
+		A39B4BCE18C7BF26004016B2 /* THSignalSourcePopoverContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A39B4BCC18C7BF26004016B2 /* THSignalSourcePopoverContentViewController.m */; };
+		A39B4BCF18C7BF26004016B2 /* THSignalSourcePopoverContentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A39B4BCD18C7BF26004016B2 /* THSignalSourcePopoverContentViewController.xib */; };
+		A39B4BD218C7C376004016B2 /* THSignalSourcePopoverContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = A39B4BD118C7C376004016B2 /* THSignalSourcePopoverContentView.m */; };
 		A3CBF54018BFFA1C00537127 /* THSignalSource.m in Sources */ = {isa = PBXBuildFile; fileRef = A3CBF53F18BFFA1C00537127 /* THSignalSource.m */; };
 		A3CBF54318BFFE3400537127 /* THSignalSourceEditable.m in Sources */ = {isa = PBXBuildFile; fileRef = A3CBF54218BFFE3400537127 /* THSignalSourceEditable.m */; };
 		A3CBF54618C000ED00537127 /* THSignalSourcePaletteItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A3CBF54518C000ED00537127 /* THSignalSourcePaletteItem.m */; };
@@ -2679,12 +2682,17 @@
 		A3747F4018B697F300BAEAB7 /* palette_flexsensor@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "palette_flexsensor@2x.png"; sourceTree = "<group>"; };
 		A382F91C18B6428F000C1108 /* THFlexSensorPaletteItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THFlexSensorPaletteItem.h; sourceTree = "<group>"; };
 		A382F91D18B6428F000C1108 /* THFlexSensorPaletteItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THFlexSensorPaletteItem.m; sourceTree = "<group>"; };
+		A39B4BCB18C7BF26004016B2 /* THSignalSourcePopoverContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = THSignalSourcePopoverContentViewController.h; path = "TangoHapps/classes/palette items/THSignalSourcePopoverContentViewController.h"; sourceTree = SOURCE_ROOT; };
+		A39B4BCC18C7BF26004016B2 /* THSignalSourcePopoverContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = THSignalSourcePopoverContentViewController.m; path = "TangoHapps/classes/palette items/THSignalSourcePopoverContentViewController.m"; sourceTree = SOURCE_ROOT; };
+		A39B4BCD18C7BF26004016B2 /* THSignalSourcePopoverContentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = THSignalSourcePopoverContentViewController.xib; path = "TangoHapps/classes/palette items/THSignalSourcePopoverContentViewController.xib"; sourceTree = SOURCE_ROOT; };
+		A39B4BD018C7C376004016B2 /* THSignalSourcePopoverContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THSignalSourcePopoverContentView.h; sourceTree = "<group>"; };
+		A39B4BD118C7C376004016B2 /* THSignalSourcePopoverContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THSignalSourcePopoverContentView.m; sourceTree = "<group>"; };
 		A3CBF53E18BFFA1C00537127 /* THSignalSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THSignalSource.h; sourceTree = "<group>"; };
 		A3CBF53F18BFFA1C00537127 /* THSignalSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THSignalSource.m; sourceTree = "<group>"; };
 		A3CBF54118BFFE3400537127 /* THSignalSourceEditable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THSignalSourceEditable.h; sourceTree = "<group>"; };
 		A3CBF54218BFFE3400537127 /* THSignalSourceEditable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THSignalSourceEditable.m; sourceTree = "<group>"; };
-		A3CBF54418C000ED00537127 /* THSignalSourcePaletteItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THSignalSourcePaletteItem.h; sourceTree = "<group>"; };
-		A3CBF54518C000ED00537127 /* THSignalSourcePaletteItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THSignalSourcePaletteItem.m; sourceTree = "<group>"; };
+		A3CBF54418C000ED00537127 /* THSignalSourcePaletteItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = THSignalSourcePaletteItem.h; path = "../../palette items/THSignalSourcePaletteItem.h"; sourceTree = "<group>"; };
+		A3CBF54518C000ED00537127 /* THSignalSourcePaletteItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = THSignalSourcePaletteItem.m; path = "../../palette items/THSignalSourcePaletteItem.m"; sourceTree = "<group>"; };
 		A3CBF54F18C003D100537127 /* palette_signalsource.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = palette_signalsource.png; sourceTree = "<group>"; };
 		A3CBF55018C003D100537127 /* palette_signalsource@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "palette_signalsource@2x.png"; sourceTree = "<group>"; };
 		A3CBF55118C003D100537127 /* signalsource.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = signalsource.png; sourceTree = "<group>"; };
@@ -2692,9 +2700,9 @@
 		A3CBF55718C007C500537127 /* palette_signalsource.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = palette_signalsource.png; sourceTree = "<group>"; };
 		A3CBF55818C007C500537127 /* palette_signalsource@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "palette_signalsource@2x.png"; sourceTree = "<group>"; };
 		A3CBF55C18C07F5200537127 /* singletick.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = singletick.txt; sourceTree = "<group>"; };
-		A3CBF56B18C0BAA100537127 /* THSignalSourceProperties.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = THSignalSourceProperties.xib; sourceTree = "<group>"; };
-		A3CBF5A518C0BBF600537127 /* THSignalSourceProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THSignalSourceProperties.h; sourceTree = "<group>"; };
-		A3CBF5A618C0BBF600537127 /* THSignalSourceProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THSignalSourceProperties.m; sourceTree = "<group>"; };
+		A3CBF56B18C0BAA100537127 /* THSignalSourceProperties.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = THSignalSourceProperties.xib; path = ../../../resources/gui/properties/THSignalSourceProperties.xib; sourceTree = "<group>"; };
+		A3CBF5A518C0BBF600537127 /* THSignalSourceProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = THSignalSourceProperties.h; path = "../../palette properties/THSignalSourceProperties.h"; sourceTree = "<group>"; };
+		A3CBF5A618C0BBF600537127 /* THSignalSourceProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = THSignalSourceProperties.m; path = "../../palette properties/THSignalSourceProperties.m"; sourceTree = "<group>"; };
 		A3CBF5A818C0C1BB00537127 /* doubletick.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = doubletick.txt; sourceTree = "<group>"; };
 		A3CBF5AA18C0C57300537127 /* testinput.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = testinput.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -3469,7 +3477,6 @@
 				9AFB7E1A1833BBDD00694CCE /* THMonitorProperties.xib */,
 				9A7B65171834D830009D0103 /* THCompassProperties.xib */,
 				9A8942A21836215300B8CA0E /* THJennicProperties.xib */,
-				A3CBF56B18C0BAA100537127 /* THSignalSourceProperties.xib */,
 			);
 			path = properties;
 			sourceTree = "<group>";
@@ -3617,6 +3624,7 @@
 		9AF50205167B84B40020241C /* objects */ = {
 			isa = PBXGroup;
 			children = (
+				A39B4BC618C7BE53004016B2 /* newObjects */,
 				9AF50206167B84B40020241C /* programming */,
 				9AF50264167B84B40020241C /* software */,
 				9AF50218167B84B40020241C /* hardware */,
@@ -3663,10 +3671,6 @@
 				9A56CDAB17D8EDA2001021B2 /* THStringValue.m */,
 				9A56CDAF17D8EE0E001021B2 /* THStringValueEditable.h */,
 				9A56CDB017D8EE0F001021B2 /* THStringValueEditable.m */,
-				A3CBF53E18BFFA1C00537127 /* THSignalSource.h */,
-				A3CBF53F18BFFA1C00537127 /* THSignalSource.m */,
-				A3CBF54118BFFE3400537127 /* THSignalSourceEditable.h */,
-				A3CBF54218BFFE3400537127 /* THSignalSourceEditable.m */,
 				9A6B27F418AA075F009AAE31 /* THPureData.h */,
 				9A6B27F518AA075F009AAE31 /* THPureData.m */,
 				9A6B27F618AA075F009AAE31 /* THPureDataEditable.h */,
@@ -3940,8 +3944,6 @@
 				9A894298183620BD00B8CA0E /* THJennicPaletteItem.m */,
 				A382F91C18B6428F000C1108 /* THFlexSensorPaletteItem.h */,
 				A382F91D18B6428F000C1108 /* THFlexSensorPaletteItem.m */,
-				A3CBF54418C000ED00537127 /* THSignalSourcePaletteItem.h */,
-				A3CBF54518C000ED00537127 /* THSignalSourcePaletteItem.m */,
 			);
 			path = "palette items";
 			sourceTree = "<group>";
@@ -4029,8 +4031,6 @@
 				9A89429C1836213100B8CA0E /* THJennicProperties.m */,
 				9A1C3AFD1886E4D8007C5E94 /* THAutorouteProperties.h */,
 				9A1C3AFE1886E4D8007C5E94 /* THAutorouteProperties.m */,
-				A3CBF5A518C0BBF600537127 /* THSignalSourceProperties.h */,
-				A3CBF5A618C0BBF600537127 /* THSignalSourceProperties.m */,
 			);
 			path = "palette properties";
 			sourceTree = "<group>";
@@ -4246,6 +4246,60 @@
 				9AFB7E681833DE6400694CCE /* THClientPresetsGenerator.m */,
 			);
 			path = util;
+			sourceTree = "<group>";
+		};
+		A39B4BC518C7BDFB004016B2 /* signalSource */ = {
+			isa = PBXGroup;
+			children = (
+				A39B4BC718C7BEAF004016B2 /* model */,
+				A39B4BC818C7BEB9004016B2 /* UI */,
+			);
+			name = signalSource;
+			path = conditions;
+			sourceTree = "<group>";
+		};
+		A39B4BC618C7BE53004016B2 /* newObjects */ = {
+			isa = PBXGroup;
+			children = (
+				A39B4BC518C7BDFB004016B2 /* signalSource */,
+			);
+			name = newObjects;
+			sourceTree = "<group>";
+		};
+		A39B4BC718C7BEAF004016B2 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				A3CBF53E18BFFA1C00537127 /* THSignalSource.h */,
+				A3CBF53F18BFFA1C00537127 /* THSignalSource.m */,
+				A3CBF54118BFFE3400537127 /* THSignalSourceEditable.h */,
+				A3CBF54218BFFE3400537127 /* THSignalSourceEditable.m */,
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
+		A39B4BC818C7BEB9004016B2 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				A39B4BC918C7BECD004016B2 /* popover */,
+				A3CBF54418C000ED00537127 /* THSignalSourcePaletteItem.h */,
+				A3CBF54518C000ED00537127 /* THSignalSourcePaletteItem.m */,
+				A3CBF5A518C0BBF600537127 /* THSignalSourceProperties.h */,
+				A3CBF5A618C0BBF600537127 /* THSignalSourceProperties.m */,
+				A3CBF56B18C0BAA100537127 /* THSignalSourceProperties.xib */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		A39B4BC918C7BECD004016B2 /* popover */ = {
+			isa = PBXGroup;
+			children = (
+				A39B4BCB18C7BF26004016B2 /* THSignalSourcePopoverContentViewController.h */,
+				A39B4BCC18C7BF26004016B2 /* THSignalSourcePopoverContentViewController.m */,
+				A39B4BCD18C7BF26004016B2 /* THSignalSourcePopoverContentViewController.xib */,
+				A39B4BD018C7C376004016B2 /* THSignalSourcePopoverContentView.h */,
+				A39B4BD118C7C376004016B2 /* THSignalSourcePopoverContentView.m */,
+			);
+			name = popover;
 			sourceTree = "<group>";
 		};
 		A3CBF55B18C07F4900537127 /* flex */ = {
@@ -5066,6 +5120,7 @@
 				9A41464D17DE7A060061EDF8 /* lilypadmode@2x.png in Resources */,
 				9A41464F17DE7A060061EDF8 /* pinsmode.png in Resources */,
 				9A1C3AC21886DDAE007C5E94 /* palette_LSMCompass.png in Resources */,
+				A39B4BCF18C7BF26004016B2 /* THSignalSourcePopoverContentViewController.xib in Resources */,
 				9A41465117DE7A060061EDF8 /* pinsmode@2x.png in Resources */,
 				9A41465317DE7A060061EDF8 /* push.png in Resources */,
 				9A41465517DE7A060061EDF8 /* push@2x.png in Resources */,
@@ -5570,11 +5625,13 @@
 				9AF503BD167B84B40020241C /* THiSwitchEditableProperties.m in Sources */,
 				9AF503BE167B84B40020241C /* THLabelProperties.m in Sources */,
 				9A1FBE08187F208400699B61 /* THI2CMessage.m in Sources */,
+				A39B4BCE18C7BF26004016B2 /* THSignalSourcePopoverContentViewController.m in Sources */,
 				9AF503BF167B84B40020241C /* THLedProperties.m in Sources */,
 				9A31659D1827955200CB3E59 /* THMonitorEditable.m in Sources */,
 				9AF503C1167B84B40020241C /* THLilypadPropertiesPinView.m in Sources */,
 				9AF503C2167B84B40020241C /* THMusicPlayerProperties.m in Sources */,
 				9AF503C3167B84B40020241C /* THSwitchProperties.m in Sources */,
+				A39B4BD218C7C376004016B2 /* THSignalSourcePopoverContentView.m in Sources */,
 				9AF503C4167B84B40020241C /* THTouchpadProperties.m in Sources */,
 				9AF503C5167B84B40020241C /* THValueProperties.m in Sources */,
 				9AA4D72D18AE16E600A43433 /* THBLELilyPad.m in Sources */,

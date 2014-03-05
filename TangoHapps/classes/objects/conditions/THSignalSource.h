@@ -10,6 +10,7 @@
 
 @interface THSignalSource : TFSimulableObject
 @property (nonatomic, assign, readonly) NSInteger currentOutputValue;
+@property (nonatomic, strong, readonly) NSArray *data;
 - (void)updatedSimulation;
 - (void)start;
 - (void)stop;

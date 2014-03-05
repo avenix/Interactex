@@ -10,5 +10,7 @@
 #import "THProgrammingElementEditable.h"
 @interface THSignalSourceEditable : THProgrammingElementEditable
 @property (nonatomic, assign, readwrite) NSInteger currentOutputValue;
+@property (nonatomic, assign, readwrite) float leftBorderPercentage;
+@property (nonatomic, assign, readwrite) float rightBorderPercentage;
 - (void)switchSourceFile:(NSString *)filename;
 @end
