@@ -270,12 +270,10 @@ Variables have an event to set the value to be stored in the Variable and emit t
 |   ![](Documentation/icons/utilities/palette_sound.png)  |   Sound  |        valueChanged(Number)       |                                        play()                                        |        -       |
 
 ## About
-I developed the Wearables Development Toolkit as part of my post-doc at the Technical University of Munich. 
+My name is Juan Haladjian. I developed the Wearables Development Toolkit as part of my post-doc at the Technical University of Munich. 
 
-Feel free to contact me if you have any questions
+Feel free to contact me with feature requests:
 
+[Email](haladjia@in.tum.de)
 
-[haladjia@in.tum.de!](haladjia@in.tum.de)
-
-
-[in.tum.de/~haladjia!](in.tum.de/~haladjia)
+[Website](in.tum.de/~haladjia)
