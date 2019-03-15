@@ -274,6 +274,6 @@ My name is Juan Haladjian. I developed the Wearables Development Toolkit as part
 
 Feel free to contact me with feature requests:
 
-[Email](haladjia@in.tum.de)
+[Email](mailto:haladjia@in.tum.de)
 
-[Website](in.tum.de/~haladjia)
+[Website](http://in.tum.de/~haladjia)
