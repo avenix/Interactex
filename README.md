@@ -275,7 +275,7 @@ I developed the Wearables Development Toolkit as part of my post-doc at the Tech
 Feel free to contact me if you have any questions
 
 
-[haladjia@in.tum.de](haladjia@in.tum.de)
+[haladjia@in.tum.de!](haladjia@in.tum.de)
 
 
-[in.tum.de/~haladjia](in.tum.de/~haladjia)
+[in.tum.de/~haladjia!](in.tum.de/~haladjia)
