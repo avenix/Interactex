@@ -9,7 +9,7 @@ Interactex is an environment to create smart textile applications that interact 
 
 ![alt tag](Documentation/images/Interactex/overview.png)
 
-Interactex Designer is used to create the application and circuit design visually. Interactex Client executes applications and communicates with the smart textile. Interactex Client runs on a smartphone. Interactex Firmware runs on a microcontroller attached to the smart textile and executes commands received from Interactex Client. TextIT is used to create and export functionality components that can be imported into Interactex Designer.
+Interactex Designer is used to create the application and circuit design visually. Interactex Client executes applications and communicates with the smart textile. Interactex Client runs on a smartphone. Interactex Firmware runs on a microcontroller attached to the smart textile and executes commands received from Interactex Client. TextIT is used to create and export functionality components that can be imported into Interactex Designer. To get a first insight into Interactex, watch this [demo video:](https://www.youtube.com/watch?v=y5ShpipZxvc&feature=youtu.be)
 
 ## Interactex Designer
 
