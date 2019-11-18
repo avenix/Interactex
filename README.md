@@ -1,7 +1,7 @@
 Interactex
 ==========
 
-Interactex is an environment to create smart textile applications that interact with a smartphone.
+Interactex is a rapid prototyping environment to create smart textile applications that interact with a smartphone.
 
 # Overview
 
