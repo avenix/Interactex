@@ -274,7 +274,10 @@ My name is Juan Haladjian. I developed Interactex as part of my Ph.D. at the Tec
 
 Feel free to contact me with feature requests:
 
-Website: [www.jhaladjian.com](www.jhaladjian.com)
+Website: [www.jhaladjian.com](https://www.jhaladjian.com)
+
 Academic Website: [http://in.tum.de/~haladjia](http://home.in.tum.de/~haladjia/)
-LinkedIn: [www.linkedin.com/in/juan-haladjian](www.linkedin.com/in/juan-haladjian)
+
+LinkedIn: [www.linkedin.com/in/juan-haladjian](https://www.linkedin.com/in/juan-haladjian)
+
 Email: [haladjia@in.tum.de](mailto:haladjia@in.tum.de)
